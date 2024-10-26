@@ -12,6 +12,7 @@ using FishNet.Transporting;
 using GameKit.Dependencies.Utilities;
 using System;
 using System.Collections.Generic;
+using FishNet.Managing.Timing;
 using UnityEngine;
 using UnityEngine.Scripting;
 using static FishNet.Object.NetworkObject;
@@ -46,12 +47,16 @@ namespace FishNet.Component.Transforming
             /// Channel the current data arrived on.
             /// </summary>
             public Channel Channel;
+            /// <summary>
+            /// LocalTick of the side receiving this update, typically the server.
+            /// </summary>
+            public uint LocalTick;
 
             /// <summary>
             /// Updates current values.
             /// </summary>
             /// <param name="updateHasData">True to set all HasData to true.</param>
-            public void Update(ArraySegment<byte> data, Channel channel, bool updateHasData)
+            public void Update(ArraySegment<byte> data, Channel channel, bool updateHasData, uint localTick)
             {
                 if (Writer == null)
                     Writer = WriterPool.Retrieve();
@@ -59,6 +64,7 @@ namespace FishNet.Component.Transforming
                 Writer.Reset();
                 Writer.WriteArraySegment(data);
                 Channel = channel;
+                LocalTick = localTick;
 
                 if (updateHasData)
                     HasData = true;
@@ -71,6 +77,12 @@ namespace FishNet.Component.Transforming
             {
                 HasData = true;
                 Channel = Channel.Reliable;
+            }
+
+            public void ResetState()
+            {
+                HasData = false;
+                WriterPool.StoreAndDefault(ref Writer);
             }
         }
 
@@ -543,11 +555,15 @@ namespace FishNet.Component.Transforming
         /// <summary>
         /// Last received data from an authoritative client.
         /// </summary>
-        private ReceivedClientData _authoritativeClientData;
+        private ReceivedClientData _authoritativeClientData = new();
         /// <summary>
         /// True if subscribed to TimeManager for ticks.
         /// </summary>
         private bool _subscribedToTicks;
+        /// <summary>
+        /// True if subscribed to TimeManager for update.
+        /// </summary>
+        private bool _subscribedToUpdate;
         /// <summary>
         /// Last TransformData to be received from the server.
         /// </summary>
@@ -559,11 +575,11 @@ namespace FishNet.Component.Transforming
         /// <summary>
         /// Last RateData to be calculated from LastReceivedTransformData.
         /// </summary>
-        private RateData _lastCalculatedRateData = new();
+        private readonly RateData _lastCalculatedRateData = new();
         /// <summary>
         /// GoalDatas to move towards.
         /// </summary>
-        private Queue<GoalData> _goalDataQueue = new();
+        private readonly Queue<GoalData> _goalDataQueue = new();
         /// <summary>
         /// Current GoalData being used.
         /// </summary>
@@ -576,14 +592,10 @@ namespace FishNet.Component.Transforming
         /// Number of intervals remaining before synchronization.
         /// </summary>
         private short _intervalsRemaining;
-
         /// <summary>
         /// Last sent transform data.
         /// </summary>
         private TransformData _lastSentTransformData;
-
-        private TransformData _ll;
-
         /// <summary>
         /// Writers for changed data.
         /// </summary>
@@ -606,6 +618,10 @@ namespace FishNet.Component.Transforming
         /// Cached transform
         /// </summary>
         private Transform _cachedTransform;
+        /// <summary>
+        /// Cached TimeManager reference for performance.
+        /// </summary>
+        private TimeManager _timeManager;
         #endregion
 
         #region Const.
@@ -629,7 +645,7 @@ namespace FishNet.Component.Transforming
         public override void OnStartNetwork()
         {
             _cachedTransform = transform;
-            base.TimeManager.OnUpdate += TimeManager_OnUpdate;
+            _timeManager = base.TimeManager;
         }
 
         public override void OnStartServer()
@@ -664,6 +680,7 @@ namespace FishNet.Component.Transforming
         public override void OnStartClient()
         {
             _lastReceivedServerTransformData = ObjectCaches<TransformData>.Retrieve();
+            ChangeUpdateSubscription(subscribe: true);
             ConfigureComponents();
             InitializeFields(false);
             SetDefaultGoalData();
@@ -681,6 +698,7 @@ namespace FishNet.Component.Transforming
 
         public override void OnOwnershipClient(NetworkConnection prevOwner)
         {
+            ConfigureComponents();
             _intervalsRemaining = 0;
 
             /* If newOwner is self then client
@@ -707,13 +725,10 @@ namespace FishNet.Component.Transforming
             TryClearGoalDatas_OwnershipChange(prevOwner, false);
         }
 
-        public override void OnStopClient() { }
-
         public override void OnStopNetwork()
         {
             ResetState();
-            if (base.TimeManager != null)
-                base.TimeManager.OnUpdate -= TimeManager_OnUpdate;
+            ChangeUpdateSubscription(subscribe: false);
         }
 
         /// <summary>
@@ -851,7 +866,7 @@ namespace FishNet.Component.Transforming
         private void TimeManager_OnPostTick()
         {
             //If to force send via tick delay do so and reset force send tick.
-            if (_forceSendTick != Managing.Timing.TimeManager.UNSET_TICK && base.TimeManager.LocalTick > _forceSendTick)
+            if (_forceSendTick != Managing.Timing.TimeManager.UNSET_TICK && _timeManager.LocalTick > _forceSendTick)
             {
                 _forceSendTick = Managing.Timing.TimeManager.UNSET_TICK;
                 ForceSend();
@@ -887,10 +902,21 @@ namespace FishNet.Component.Transforming
                     _intervalsRemaining = -1;
             }
 
-            if (base.IsServerInitialized)
-                SendToClients();
+            bool isServerInitialized = base.IsServerInitialized;
+            bool isClientInitialized = base.IsClientInitialized;
 
-            if (base.IsClientInitialized)
+            if (isServerInitialized)
+            {
+                /* If client is not initialized then
+                 * call a move to targe ton post tick to ensure
+                 * anything with instant rates gets moved. */
+                if (!isClientInitialized)
+                    MoveToTarget((float)_timeManager.TickDelta);
+                //
+                SendToClients();
+            }
+
+            if (isClientInitialized)
                 SendToServer(_lastSentTransformData);
         }
 
@@ -907,6 +933,18 @@ namespace FishNet.Component.Transforming
                 base.NetworkManager.TimeManager.OnPostTick += TimeManager_OnPostTick;
             else
                 base.NetworkManager.TimeManager.OnPostTick -= TimeManager_OnPostTick;
+        }
+
+        private void ChangeUpdateSubscription(bool subscribe)
+        {
+            if (subscribe == _subscribedToUpdate || _timeManager == null)
+                return;
+
+            _subscribedToUpdate = subscribe;
+            if (subscribe)
+                _timeManager.OnUpdate += TimeManager_OnUpdate;
+            else
+                _timeManager.OnUpdate -= TimeManager_OnUpdate;
         }
 
         /// <summary>
@@ -959,7 +997,7 @@ namespace FishNet.Component.Transforming
              * immediately and set a new delay tick. */
             if (_forceSendTick != Managing.Timing.TimeManager.UNSET_TICK)
                 ForceSend();
-            _forceSendTick = base.TimeManager.LocalTick + ticks;
+            _forceSendTick = _timeManager.LocalTick + ticks;
         }
 
         /// <summary>
@@ -1500,15 +1538,15 @@ namespace FishNet.Component.Transforming
 
             float multiplier = 1f;
             int queueCount = _goalDataQueue.Count;
-            //For every entry past interpolation increase move rate.
+            //Increase move rate slightly if over queue count.
             if (queueCount > (_interpolation + 1))
-                multiplier += (0.05f * queueCount);
+                multiplier += 0.05f;
 
             //Rate to update. Changes per property.
             float rate;
             Transform t = _cachedTransform;
 
-            //Snap any positions that should be.
+            //Snap any bits of the transform that should be.
             SnapProperties(td);
 
             //Position.
@@ -1590,23 +1628,30 @@ namespace FishNet.Component.Transforming
              * If owner is clientHost just send current server values. */
             if (clientAuthoritativeWithOwner && !base.Owner.IsLocalClient)
             {
-                //Check to set hasData if does not, and hasn't sent reliably yet.
-                if (!_authoritativeClientData.HasData && _authoritativeClientData.Channel != Channel.Reliable)
-                    _authoritativeClientData.SendReliably();
+                /* If there is not new data yet and the last received was not reliable
+                 * then a packet maybe did not arrive when expected. See if we need
+                 * to force a reliable with the last data based on ticks passed since
+                 * last update.*/
+                if (!_authoritativeClientData.HasData && _authoritativeClientData.Channel != Channel.Reliable && _authoritativeClientData.Writer != null)
+                {
+                    /* If ticks have passed beyond interpolation then force
+                     * to send reliably. */
+                    uint maxPassedTicks = (uint)(1 + _interpolation + _extrapolation);
+                    uint localTick = _timeManager.LocalTick;
+                    if ((localTick - _authoritativeClientData.LocalTick) > maxPassedTicks)
+                        _authoritativeClientData.SendReliably();
+                    //Not enough time to send reliably, just don't need update.
+                    else
+                        return;
+                }
 
                 if (_authoritativeClientData.HasData)
                 {
                     _changedSinceStart = true;
                     //Resend data from clients.
                     ObserversUpdateClientAuthoritativeTransform(_authoritativeClientData.Writer.GetArraySegment(), _authoritativeClientData.Channel);
-
-                    /* If has not yet sent reliably then make it so
-                     * for the next send. If new data comes in this will be
-                     * overwritten with whatever channel is used on the new data. */
-                    if (_authoritativeClientData.Channel != Channel.Reliable)
-                        _authoritativeClientData.SendReliably();
-                    else
-                        _authoritativeClientData.HasData = false;
+                    //Now being sent data can unset.
+                    _authoritativeClientData.HasData = false;
                 }
             }
             //Sending server transform state.
@@ -2118,7 +2163,7 @@ namespace FishNet.Component.Transforming
             if (base.IsServerInitialized)
                 return;
             //Not new data.
-            uint lastPacketTick = base.TimeManager.LastPacketTick.LastRemoteTick;
+            uint lastPacketTick = _timeManager.LastPacketTick.LastRemoteTick;
             if (lastPacketTick <= _lastObserversRpcTick)
                 return;
 
@@ -2138,13 +2183,14 @@ namespace FishNet.Component.Transforming
                 return;
             }
 
+            TimeManager tm = base.TimeManager;
             //Not new data.
-            uint lastPacketTick = base.TimeManager.LastPacketTick.LastRemoteTick;
+            uint lastPacketTick = tm.LastPacketTick.LastRemoteTick;
             if (lastPacketTick <= _lastServerRpcTick)
                 return;
             _lastServerRpcTick = lastPacketTick;
 
-            _authoritativeClientData.Update(data, channel, true);
+            _authoritativeClientData.Update(data, channel, updateHasData: true, tm.LocalTick);
             DataReceived(data, channel, true);
         }
 
@@ -2170,7 +2216,7 @@ namespace FishNet.Component.Transforming
             bool hasChanged = HasChanged(prevTd, nextTd);
 
             //If server only teleport.
-            if (asServer && !base.IsClientInitialized)
+            if (asServer && !base.IsClientStarted)
             {
                 uint tickDifference = GetTickDifference(prevTd, nextGd, 1, asServer: true, out float timePassed);
                 SetInstantRates(nextGd.Rates, tickDifference, timePassed);
@@ -2191,7 +2237,7 @@ namespace FishNet.Component.Transforming
             prevTd.Update(nextTd);
             prevRd.Update(nextGd.Rates);
 
-            nextGd.ReceivedTick = base.TimeManager.LocalTick;
+            nextGd.ReceivedTick = _timeManager.LocalTick;
 
             bool currentDataNull = (_currentGoalData == null);
             /* If extrapolating then immediately break the extrapolation
@@ -2272,7 +2318,7 @@ namespace FishNet.Component.Transforming
         private void UpdateTransformData(ArraySegment<byte> packetData, TransformData prevTransformData, TransformData nextTransformData, ref ChangedFull changedFull)
         {
             DeserializePacket(packetData, prevTransformData, nextTransformData, ref changedFull);
-            nextTransformData.Tick = base.TimeManager.LastPacketTick.LastRemoteTick;
+            nextTransformData.Tick = _timeManager.LastPacketTick.LastRemoteTick;
         }
 
         /// <summary>
@@ -2382,13 +2428,9 @@ namespace FishNet.Component.Transforming
             /* Reset server and client side since this is called from
              * OnStopNetwork. */
 
-            ObjectCaches<PooledWriter>.StoreAndDefault(ref _authoritativeClientData.Writer);
+            _authoritativeClientData.ResetState();
 
-            if (_toClientChangedWriter != null)
-            {
-                WriterPool.Store(_toClientChangedWriter);
-                ObjectCaches<PooledWriter>.StoreAndDefault(ref _toClientChangedWriter);
-            }
+            WriterPool.StoreAndDefault(ref _toClientChangedWriter);
 
             ObjectCaches<bool>.StoreAndDefault(ref _authoritativeClientData.HasData);
             ObjectCaches<ChangedDelta>.StoreAndDefault(ref _serverChangedSinceReliable);
@@ -2399,7 +2441,8 @@ namespace FishNet.Component.Transforming
             while (_goalDataQueue.Count > 0)
                 ResettableObjectCaches<GoalData>.Store(_goalDataQueue.Dequeue());
 
-            ResettableObjectCaches<TransformData>.StoreAndDefault(ref _lastSentTransformData);
+            if (_lastSentTransformData != null)
+                _lastSentTransformData.ResetState();
             ResettableObjectCaches<GoalData>.StoreAndDefault(ref _currentGoalData);
         }
 
@@ -2409,8 +2452,7 @@ namespace FishNet.Component.Transforming
         private void ResetState_OnDestroy()
         {
             ResettableObjectCaches<TransformData>.StoreAndDefault(ref _lastSentTransformData);
-            if (_toClientChangedWriter != null)
-                WriterPool.Store(_toClientChangedWriter);
+            WriterPool.StoreAndDefault(ref _toClientChangedWriter);
         }
     }
 }

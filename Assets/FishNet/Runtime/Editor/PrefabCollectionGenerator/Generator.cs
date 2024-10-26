@@ -310,7 +310,7 @@ namespace FishNet.Editing.PrefabCollectionGenerator
         /// <summary>
         /// Generates prefabs by iterating all files within settings parameters.
         /// </summary>
-        public static void GenerateFull(PrefabGeneratorConfigurations settings = null, bool forced = false)
+        public static void GenerateFull(PrefabGeneratorConfigurations settings = null, bool forced = false, bool initializeAdded = true)
         {
 #if PARRELSYNC
             if (ParrelSync.ClonesManager.IsClone() && ParrelSync.Preferences.AssetModPref.Value)
@@ -373,7 +373,7 @@ namespace FishNet.Editing.PrefabCollectionGenerator
 
             //Clear and add built list.
             prefabCollection.Clear();
-            prefabCollection.AddObjects(foundNobs, false);
+            prefabCollection.AddObjects(foundNobs, checkForDuplicates: false, initializeAdded);
             bool dirtied = prefabCollection.SetAssetPathHashes(0);
 
             int newCount = prefabCollection.GetObjectCount();
@@ -634,7 +634,7 @@ namespace FishNet.Editing.PrefabCollectionGenerator
         /// </summary>
         private static bool CanAddNetworkObject(NetworkObject networkObject, PrefabGeneratorConfigurations settings)
         {
-            return networkObject != null && (networkObject.IsSpawnable || !settings.SpawnableOnly);
+            return networkObject != null && (networkObject.GetIsSpawnable() || !settings.SpawnableOnly);
         }
     }
 }
