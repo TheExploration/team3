@@ -4,27 +4,27 @@ using UnityEngine;
 using FishNet.Connection;
 using FishNet.Object;
  
-//This is made by Bobsi Unity - Youtube
+
 public class PlayerController : NetworkBehaviour
 {
     [Header("Base setup")]
-    public float walkingSpeed = 7.5f;
-    public float runningSpeed = 11.5f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
-    public float lookSpeed = 2.0f;
-    public float lookXLimit = 45.0f;
+    [SerializeField]
+    private float moveSpeed = 5f;
  
-    CharacterController characterController;
-    Vector3 moveDirection = Vector3.zero;
-    float rotationX = 0;
- 
+    [SerializeField]
+    private Rigidbody rb;
+    
     [HideInInspector]
     public bool canMove = true;
  
     [SerializeField]
     private Camera playerCamera;
  
+    
+    public Vector3 cameraOffset = new Vector3(0, 10, -10); // Offset for the camera
+    public float smoothSpeed = 0.125f;  // Speed for smooth camera follow
+    
+    private Vector3 movement;
  
     public override void OnStartClient()
     {
@@ -42,44 +42,61 @@ public class PlayerController : NetworkBehaviour
  
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
- 
-        
+        rb.freezeRotation = true;
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
+        rb.drag = 5f;
+        rb.angularDrag = 10f;
     }
  
     void Update()
     {
-        bool isRunning = false;
- 
-        // Press Left Shift to run
-        isRunning = Input.GetKey(KeyCode.LeftShift);
- 
-        // We are grounded, so recalculate move direction based on axis
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
- 
-        float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * Input.GetAxis("Horizontal") : 0;
-        float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
- 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (base.IsOwner)
         {
-            moveDirection.y = jumpSpeed;
+            // Get movement input
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.z = Input.GetAxisRaw("Vertical");
+            RotateTowardsMouse();
         }
-        else
-        {
-            moveDirection.y = movementDirectionY;
-        }
- 
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
- 
-        // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
- 
         
+        FollowPlayerWithCamera();
+
+    }
+    private void RotateTowardsMouse()
+    {
+        // Step 1: Get the screen center and mouse position
+        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
+        Vector3 mousePosition = Input.mousePosition;
+
+        // Step 2: Calculate direction and angle
+        Vector3 direction = mousePosition - screenCenter;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Step 3: Apply the rotation on the Z-axis
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+    
+    
+    void FixedUpdate()
+    {
+        if (base.IsOwner && canMove)
+        {
+            // Move the Rigidbody2D based on input
+            Vector3 newPosition = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(newPosition);
+        }
+        
+    }
+    
+    private void FollowPlayerWithCamera()
+    {
+        // Check if the camera is assigned
+        if (playerCamera != null)
+        {
+            // Calculate the target position based on the player position and offset
+            Vector3 targetPosition = transform.position + cameraOffset;
+            
+            // Smoothly move the camera towards the target position
+            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetPosition, smoothSpeed);
+        }
     }
 }
