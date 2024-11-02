@@ -221,7 +221,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// PreInitializes this for use with the network.
         /// </summary>
         [MakePublic]
-        protected internal void PreInitialize(NetworkManager networkManager)
+        internal protected void PreInitialize(NetworkManager networkManager)
         {
             NetworkManager = networkManager;
 
@@ -249,7 +249,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// </summary>
         /// <param name="asServer">True if OnStartServer was called, false if OnStartClient.</param>
         [MakePublic]
-        protected internal virtual void OnStartCallback(bool asServer)
+        internal protected virtual void OnStartCallback(bool asServer)
         {
             if (asServer)
                 OnStartServerCalled = true;
@@ -262,7 +262,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// </summary>
         /// <param name="asServer">True if OnStopServer was called, false if OnStopClient.</param>
         [MakePublic]
-        protected internal virtual void OnStopCallback(bool asServer)
+        internal protected virtual void OnStopCallback(bool asServer)
         {
             if (asServer)
                 OnStartServerCalled = false;
@@ -460,7 +460,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// </summary>
         /// <param name="resetSyncTick">True to set the next time data may sync.</param>
         [MakePublic]
-        protected internal virtual void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
+        internal protected virtual void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
         {
             WriteHeader(writer, resetSyncTick);
         }
@@ -488,18 +488,18 @@ namespace FishNet.Object.Synchronizing.Internal
         /// Writes all values for the SyncType.
         /// </summary>
         [MakePublic]
-        protected internal virtual void WriteFull(PooledWriter writer) { }
+        internal protected virtual void WriteFull(PooledWriter writer) { }
 
         /// <summary>
         /// Sets current value as server or client through deserialization.
         /// </summary>
         [MakePublic]
-        protected internal virtual void Read(PooledReader reader, bool asServer) { }
+        internal protected virtual void Read(PooledReader reader, bool asServer) { }
 
         /// <summary>
         /// Resets initialized values for server and client.
         /// </summary>
-        protected internal virtual void ResetState()
+        internal protected virtual void ResetState()
         {
             ResetState(true);
             ResetState(false);
@@ -509,7 +509,7 @@ namespace FishNet.Object.Synchronizing.Internal
         /// Resets initialized values for server or client.
         /// </summary>
         [MakePublic]
-        protected internal virtual void ResetState(bool asServer)
+        internal protected virtual void ResetState(bool asServer)
         {
             if (asServer)
             {

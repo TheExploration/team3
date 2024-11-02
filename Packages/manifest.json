@@ -6,6 +6,7 @@
     "com.unity.feature.development": "1.0.1",
     "com.unity.services.authentication": "3.3.3",
     "com.unity.services.core": "1.13.0",
+    "com.unity.services.relay": "1.1.1",
     "com.unity.textmeshpro": "3.0.7",
     "com.unity.timeline": "1.7.6",
     "com.unity.transport": "2.4.0",

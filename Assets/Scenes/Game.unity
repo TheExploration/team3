@@ -258,7 +258,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -289.2, y: 160}
+  m_AnchoredPosition: {x: -395.99, y: 202.3}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &324139250
@@ -304,7 +304,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 324139251}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2099419188}
+        m_TargetAssemblyTypeName: Networking, Assembly-CSharp
+        m_MethodName: OnClick_Server
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &324139251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1474,7 +1486,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1070847814}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2099419188}
+        m_TargetAssemblyTypeName: Networking, Assembly-CSharp
+        m_MethodName: OnClick_Client
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1070847814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,7 +1550,7 @@ GameObject:
   - component: {fileID: 1574435229}
   - component: {fileID: 1574435234}
   - component: {fileID: 1574435233}
-  - component: {fileID: 1574435232}
+  - component: {fileID: 1574435235}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1584,18 +1608,6 @@ Transform:
   - {fileID: 2099419184}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1574435232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574435228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cca1056a5dea64ec38acdbea8feb3551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1574435233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,7 +1622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ProtocolType: 0
   m_UseWebSockets: 0
-  m_UseEncryption: 0
+  m_UseEncryption: 1
   m_MaxPacketQueueSize: 128
   m_MaxPayloadSize: 6144
   m_HeartbeatTimeoutMS: 500
@@ -1646,6 +1658,22 @@ MonoBehaviour:
     _latency: 0
     _outOfOrder: 0
     _packetLoss: 0
+--- !u!114 &1574435235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574435228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211a9f6ec51ddc14f908f5acc0cd0423, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 5039206779619965638, guid: 1086059e83147f64b9db341a93d654e2, type: 3}
+  _addToDefaultScene: 1
+  Spawns:
+  - {fileID: 0}
 --- !u!1 &2030942150
 GameObject:
   m_ObjectHideFlags: 0
@@ -1746,7 +1774,19 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2099419188}
+        m_TargetAssemblyTypeName: Networking, Assembly-CSharp
+        m_MethodName: SetJoinCode
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -1764,7 +1804,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2099419188}
+        m_TargetAssemblyTypeName: Networking, Assembly-CSharp
+        m_MethodName: SetJoinCode
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1833,6 +1885,7 @@ GameObject:
   - component: {fileID: 2099419187}
   - component: {fileID: 2099419186}
   - component: {fileID: 2099419185}
+  - component: {fileID: 2099419188}
   m_Layer: 0
   m_Name: NetworkHudCanvas
   m_TagString: Untagged
@@ -1926,6 +1979,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2099419188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099419183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc27241862ee454ca67942b1070a931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _joinCode: 
+  _networkManager: {fileID: 1574435229}
+  _displayJoin: {fileID: 809495374}
+  _textField: {fileID: 750064581}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

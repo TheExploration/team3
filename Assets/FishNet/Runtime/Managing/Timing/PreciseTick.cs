@@ -1,6 +1,7 @@
 ﻿using System;
 using FishNet.Serializing;
 using GameKit.Dependencies.Utilities;
+using UnityEngine;
 
 namespace FishNet.Managing.Timing
 {
@@ -27,11 +28,7 @@ namespace FishNet.Managing.Timing
         /// Maximum value a percent can be as a byte.
         /// </summary>
         public const byte MAXIMUM_BYTE_PERCENT = 100;
-        /// <summary>
-        /// Value to use when a precise tick is unset.
-        /// </summary>
-        public static PreciseTick GetUnsetValue() => new(TimeManager.UNSET_TICK, (byte)0);
-        
+
         /// <summary>
         /// Creates a precise tick where the percentage is a byte between 0 and 100.
         /// </summary>
@@ -51,7 +48,7 @@ namespace FishNet.Managing.Timing
         {
             Tick = tick;
             percent = Maths.ClampDouble(percent, 0d, MAXIMUM_DOUBLE_PERCENT);
-            PercentAsByte = (byte)(percent * 100d);
+            PercentAsByte = (byte)Math.Round(percent * 100d);
             PercentAsDouble = percent;
         }
 
@@ -113,7 +110,7 @@ namespace FishNet.Managing.Timing
         public static PreciseTick Add(this PreciseTick pt, PreciseTick value, double delta)
         {
             double percent = (pt.PercentAsDouble + value.PercentAsDouble);
-            ulong tick = (pt.Tick + value.Tick);
+            ulong tick = ((ulong)pt.Tick + (ulong)value.Tick);
 
             if (percent > PreciseTick.MAXIMUM_DOUBLE_PERCENT)
             {
@@ -139,13 +136,13 @@ namespace FishNet.Managing.Timing
         public static PreciseTick Subtract(this PreciseTick pt, PreciseTick value, double delta)
         {
             double percent = (pt.PercentAsDouble - value.PercentAsDouble);
-            long tick = (pt.Tick - value.Tick);
+            long tick = ((long)pt.Tick - (long)value.Tick);
 
             // Percentage is negative so subtract an additional tick and absolute percentage.
             if (percent < 0d)
             {
                 tick--;
-                percent += PreciseTick.MAXIMUM_DOUBLE_PERCENT;
+                percent *= -1d;
             }
 
             if (tick < 0)
@@ -153,7 +150,7 @@ namespace FishNet.Managing.Timing
                 tick = 0;
                 percent = 0d;
             }
-
+            
             return new PreciseTick((uint)tick, percent);
         }
         

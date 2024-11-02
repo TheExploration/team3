@@ -227,7 +227,7 @@ namespace FishNet.Object.Synchronizing
         /// Called after OnStartXXXX has occurred.
         /// </summary>
         /// <param name="asServer">True if OnStartServer was called, false if OnStartClient.</param>
-        protected internal override void OnStartCallback(bool asServer)
+        internal protected override void OnStartCallback(bool asServer)
         {
             base.OnStartCallback(asServer);
             List<CachedOnChange> collection = (asServer) ? _serverOnChanges : _clientOnChanges;
@@ -249,7 +249,7 @@ namespace FishNet.Object.Synchronizing
         /// <param name="writer"></param>
         ///<param name="resetSyncTick">True to set the next time data may sync.</param>
         [APIExclude]
-        protected internal override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
+        internal protected override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
         {
             //If sending all then clear changed and write full.
             if (_sendAll)
@@ -294,7 +294,7 @@ namespace FishNet.Object.Synchronizing
         /// </summary>
         /// <param name="writer"></param>
         [APIExclude]
-        protected internal override void WriteFull(PooledWriter writer)
+        internal protected override void WriteFull(PooledWriter writer)
         {
             if (!_valuesChanged)
                 return;
@@ -315,7 +315,7 @@ namespace FishNet.Object.Synchronizing
         /// Reads and sets the current values for server or client.
         /// </summary>
         [APIExclude]
-        protected internal override void Read(PooledReader reader, bool asServer)
+        internal protected override void Read(PooledReader reader, bool asServer)
         {
             base.SetReadArguments(reader, asServer, out bool newChangeId, out bool asClientHost, out bool canModifyValues);
 
@@ -399,7 +399,7 @@ namespace FishNet.Object.Synchronizing
         /// Resets to initialized values.
         /// </summary>
         [APIExclude]
-        protected internal override void ResetState(bool asServer)
+        internal protected override void ResetState(bool asServer)
         {
             base.ResetState(asServer);
             _sendAll = false;
