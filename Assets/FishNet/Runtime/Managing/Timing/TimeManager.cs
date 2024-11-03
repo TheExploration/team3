@@ -695,10 +695,7 @@ namespace FishNet.Managing.Timing
             do
             {
                 if (frameTicked)
-                {
-                    _elapsedTickTime -= timePerSimulation;
                     OnPreTick?.Invoke();
-                }
 
                 /* This has to be called inside the loop because
                  * OnPreTick promises data hasn't been read yet.
@@ -739,6 +736,7 @@ namespace FishNet.Managing.Timing
 
                 if (frameTicked)
                 {
+                    _elapsedTickTime -= timePerSimulation;
                     Tick++;
                     LocalTick++;
                 }
@@ -757,10 +755,15 @@ namespace FishNet.Managing.Timing
             if (NetworkManager == null)
                 return 0d;
 
-            double delta = (NetworkManager.IsServerStarted) ? TickDelta : _adjustedTickDelta;
-            double percent = (_elapsedTickTime / delta);
+            double percent = (_elapsedTickTime / TickDelta);
             return percent;
         }
+
+        /// <summary>
+        /// Returns the current elapsed amount for the next tick.
+        /// </summary>
+        /// <returns></returns>
+        public double GetTickElapsedAsDouble() => _elapsedTickTime;
 
         /// <summary>
         /// Returns the percentage of how far the TimeManager is into the next tick.

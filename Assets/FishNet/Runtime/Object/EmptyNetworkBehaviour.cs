@@ -1,4 +1,3 @@
-﻿
 namespace FishNet.Object
 {
     /// <summary>
@@ -6,7 +5,7 @@ namespace FishNet.Object
     /// </summary>
     public class EmptyNetworkBehaviour : NetworkBehaviour
     {
-        
+
     }
 
 

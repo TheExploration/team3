@@ -5,7 +5,7 @@ using FishNet.Managing.Timing;
 using FishNet.Observing;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using GameKit.Dependencies.Utilities;
 using UnityEngine;
 
 namespace FishNet.Object
@@ -13,7 +13,6 @@ namespace FishNet.Object
     public partial class NetworkObject : MonoBehaviour
     {
         #region Public.
-
         /// <summary>
         /// Called when the clientHost gains or loses visibility of this object.
         /// Boolean value will be true if clientHost has visibility.
@@ -35,12 +34,13 @@ namespace FishNet.Object
         /// <summary>
         /// NetworkObserver on this object.
         /// </summary>
-        [HideInInspector] public NetworkObserver NetworkObserver = null;
+        [HideInInspector]
+        public NetworkObserver NetworkObserver = null;
         /// <summary>
         /// Clients which can see and get messages from this NetworkObject.
         /// </summary>
-        [HideInInspector] public HashSet<NetworkConnection> Observers = new();
-
+        [HideInInspector]
+        public HashSet<NetworkConnection> Observers = new();
         #endregion
 
         #region Internal.
@@ -55,7 +55,6 @@ namespace FishNet.Object
         #endregion
 
         #region Private.
-
         /// <summary>
         /// True if NetworkObserver has been initialized.
         /// </summary>
@@ -63,7 +62,8 @@ namespace FishNet.Object
         /// <summary>
         /// Found renderers on the NetworkObject and it's children. This is only used as clientHost to hide non-observers objects.
         /// </summary>
-        [System.NonSerialized] private Renderer[] _renderers;
+        [System.NonSerialized]
+        private List<Renderer> _renderers;
         /// <summary>
         /// True if renderers have been looked up.
         /// </summary>
@@ -88,7 +88,6 @@ namespace FishNet.Object
         /// Current grid position.
         /// </summary>
         private Vector2Int _hashGridPosition = HashGrid.UnsetGridPosition;
-
         #endregion
 
         /// <summary>
@@ -120,10 +119,9 @@ namespace FishNet.Object
         /// Updates cached renderers used to managing clientHost visibility.
         /// </summary>
         /// <param name="updateVisibility">True to also update visibility if clientHost.</param>
-        
         public void UpdateRenderers(bool updateVisibility = true)
         {
-            UpdateRenderers_Internal(updateVisibility);
+            InitializeRendererCollection(force: true, updateVisibility);
         }
 
         /// <summary>
@@ -131,74 +129,71 @@ namespace FishNet.Object
         /// </summary>
         /// <param name="visible">True if renderers are to be visibile.</param>
         /// <param name="force">True to skip blocking checks.</param>
-        
         public void SetRenderersVisible(bool visible, bool force = false)
         {
-            if (!force)
-            {
-                if (!NetworkObserver.UpdateHostVisibility)
-                    return;
-            }
-
-            if (!_renderersPopulated)
-            {
-                UpdateRenderers_Internal(false);
-                _renderersPopulated = true;
-            }
-
+            if (!force && !NetworkObserver.UpdateHostVisibility)
+                return;
+            
             UpdateRenderVisibility(visible);
         }
-
-        /// <summary>
-        /// Clears and updates renderers.
-        /// </summary>
         
-        private void UpdateRenderers_Internal(bool updateVisibility)
-        {
-            _renderers = GetComponentsInChildren<Renderer>(true);
-            List<Renderer> enabledRenderers = new();
-            foreach (Renderer r in _renderers)
-            {
-                if (r.enabled)
-                    enabledRenderers.Add(r);
-            }
-
-            //If there are any disabled renderers then change _renderers to cached values.
-            if (enabledRenderers.Count != _renderers.Length)
-                _renderers = enabledRenderers.ToArray();
-
-            if (updateVisibility)
-                UpdateRenderVisibility(_lastClientHostVisibility);
-        }
-
         /// <summary>
         /// Updates visibilites on renders without checks.
         /// </summary>
         /// <param name="visible"></param>
         private void UpdateRenderVisibility(bool visible)
         {
-            bool rebuildRenderers = false;
+            InitializeRendererCollection(force: false, updateVisibility: false);
 
-            Renderer[] rs = _renderers;
-            int count = rs.Length;
-            for (int i = 0; i < count; i++)
+            List<Renderer> rs = _renderers;
+            for (int i = 0; i < rs.Count; i++)
             {
                 Renderer r = rs[i];
                 if (r == null)
                 {
-                    rebuildRenderers = true;
-                    break;
+                    _renderers.RemoveAt(i);
+                    i--;
                 }
-
-                r.enabled = visible;
+                else
+                {
+                    r.enabled = visible;
+                }
             }
 
-            OnHostVisibilityUpdated?.Invoke(_lastClientHostVisibility, visible);
+            if (OnHostVisibilityUpdated != null)
+                OnHostVisibilityUpdated.Invoke(_lastClientHostVisibility, visible);
             _lastClientHostVisibility = visible;
+        }
 
-            //If to rebuild then do so, while updating visibility.
-            if (rebuildRenderers)
-                UpdateRenderers(true);
+        /// <summary>
+        /// If needed Renderers collection is initialized and populated.
+        /// </summary>
+        private void InitializeRendererCollection(bool force, bool updateVisibility)
+        {
+            if (!force && _renderersPopulated)
+                return;
+
+            List<Renderer> cache = CollectionCaches<Renderer>.RetrieveList();
+            GetComponentsInChildren<Renderer>(includeInactive: true, cache);
+
+            _renderers = new();
+
+            foreach (Renderer r in cache)
+            {
+                if (r.enabled)
+                    _renderers.Add(r);
+            }
+
+            CollectionCaches<Renderer>.Store(cache);
+
+            /* Intentionally set before event call. This is to prevent
+             * a potential endless loop should the user make another call
+             * to this objects renderer API from the event, resulting in
+             * the population repeating. */
+            _renderersPopulated = true;
+
+            if (updateVisibility)
+                UpdateRenderVisibility(_lastClientHostVisibility);
         }
 
         /// <summary>
@@ -211,7 +206,6 @@ namespace FishNet.Object
 
             NetworkObserver = NetworkManager.ObserverManager.AddDefaultConditions(this);
         }
-
 
         /// <summary>
         /// Removes a connection from observers for this object returning if the connection was removed.
@@ -280,10 +274,14 @@ namespace FishNet.Object
         /// <param name="startCount"></param>
         private void TryInvokeOnObserversActive(int startCount)
         {
-            ObserverAddedTick = TimeManager.LocalTick;
+            if (TimeManager != null)
+                ObserverAddedTick = TimeManager.LocalTick;
 
-            if ((Observers.Count > 0 && startCount == 0) || Observers.Count == 0 && startCount > 0)
-                OnObserversActive?.Invoke(this);
+            if (OnObserversActive != null)
+            {
+                if ((Observers.Count > 0 && startCount == 0) || Observers.Count == 0 && startCount > 0)
+                    OnObserversActive.Invoke(this);
+            }
         }
 
         /// <summary>
