@@ -32,7 +32,7 @@ public class Networking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(joined);
+        //Debug.Log(joined);
     }
 
     public void SetJoinCode(String joinCode)

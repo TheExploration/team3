@@ -7,7 +7,7 @@
       "dependencies": {
         "com.unity.transport": "1.3.1"
       },
-      "hash": "591ef0feca00dfb0d529ea99bb323b3f770ae39d"
+      "hash": "096c8d8214205d040c4869ae0a4d99ac4982d16b"
     },
     "com.unity.burst": {
       "version": "1.8.18",
