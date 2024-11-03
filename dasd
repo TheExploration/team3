@@ -1,0 +1,79 @@
+[33m500234f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/networking[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mnetworking[m[33m)[m HEAD@{0}: reset: moving to networking
+[33m500234f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/networking[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mnetworking[m[33m)[m HEAD@{1}: checkout: moving from networking to develop
+[33m500234f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/networking[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mnetworking[m[33m)[m HEAD@{2}: reset: moving to origin/develop
+[33ma2b9b48f[m HEAD@{3}: checkout: moving from 500234f2663bf770fa94b0ce0a560db1a3a1569a to networking
+[33m500234f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/networking[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mnetworking[m[33m)[m HEAD@{4}: reset: moving to origin/develop
+[33ma2b9b48f[m HEAD@{5}: rebase (start): checkout networking
+[33m500234f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/networking[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mnetworking[m[33m)[m HEAD@{6}: reset: moving to HEAD
+[33m500234f2[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/networking[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mnetworking[m[33m)[m HEAD@{7}: pull: Fast-forward
+[33m60681b52[m HEAD@{8}: checkout: moving from networking to develop
+[33ma2b9b48f[m HEAD@{9}: commit: NETWORKING
+[33mcd0846a2[m HEAD@{10}: commit: almost there
+[33mc3075a0c[m HEAD@{11}: reset: moving to origin/networking
+[33mc3075a0c[m HEAD@{12}: checkout: moving from networking to networking
+[33mc3075a0c[m HEAD@{13}: pull: Fast-forward
+[33m8b8f40f0[m HEAD@{14}: reset: moving to HEAD
+[33m8b8f40f0[m HEAD@{15}: commit: yea
+[33ma299952e[m HEAD@{16}: commit: networking
+[33mb77d1da7[m HEAD@{17}: reset: moving to HEAD
+[33mb77d1da7[m HEAD@{18}: commit: progress
+[33me0c94a85[m HEAD@{19}: commit: setup scene for 2d
+[33m1b2071de[m HEAD@{20}: commit: stuff
+[33m0041a5cd[m HEAD@{21}: merge develop: Merge made by the 'ort' strategy.
+[33m78e1c319[m HEAD@{22}: checkout: moving from develop to networking
+[33m60681b52[m HEAD@{23}: pull: Fast-forward
+[33me5f691d6[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{24}: checkout: moving from networking to develop
+[33m78e1c319[m HEAD@{25}: commit: update
+[33me5f691d6[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{26}: checkout: moving from networking to networking
+[33me5f691d6[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{27}: checkout: moving from develop to networking
+[33me5f691d6[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{28}: merge networking: Fast-forward
+[33m9453d517[m HEAD@{29}: checkout: moving from networking to develop
+[33me5f691d6[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{30}: merge master: Fast-forward
+[33m5596520e[m HEAD@{31}: checkout: moving from master to networking
+[33me5f691d6[m[33m ([m[1;32mmaster[m[33m)[m HEAD@{32}: pull origin master: Fast-forward
+[33m9453d517[m HEAD@{33}: checkout: moving from networking to master
+[33m5596520e[m HEAD@{34}: pull: Merge made by the 'ort' strategy.
+[33m9453d517[m HEAD@{35}: rebase (finish): returning to refs/heads/networking
+[33m9453d517[m HEAD@{36}: rebase (start): checkout master
+[33m25045557[m HEAD@{37}: checkout: moving from master to networking
+[33m9453d517[m HEAD@{38}: checkout: moving from develop to master
+[33m9453d517[m HEAD@{39}: merge master: Fast-forward
+[33m92f9e0c3[m HEAD@{40}: checkout: moving from master to develop
+[33m9453d517[m HEAD@{41}: pull origin master: Fast-forward
+[33m4a3200a7[m HEAD@{42}: checkout: moving from networking to master
+[33m25045557[m HEAD@{43}: rebase (finish): returning to refs/heads/networking
+[33m25045557[m HEAD@{44}: rebase (pick): delete useless
+[33m4a3200a7[m HEAD@{45}: rebase (start): checkout master
+[33md96c6734[m HEAD@{46}: checkout: moving from networking to networking
+[33md96c6734[m HEAD@{47}: pull --rebase origin networking (finish): returning to refs/heads/networking
+[33md96c6734[m HEAD@{48}: pull --rebase origin networking (start): checkout d96c67344da6a16608abc729e08a682046ee641b
+[33m3ca775b6[m HEAD@{49}: rebase (finish): returning to refs/heads/networking
+[33m3ca775b6[m HEAD@{50}: rebase (pick): delete useless
+[33m4a3200a7[m HEAD@{51}: rebase (start): checkout master
+[33md96c6734[m HEAD@{52}: rebase (finish): returning to refs/heads/networking
+[33md96c6734[m HEAD@{53}: rebase (start): checkout origin/networking
+[33m2348dcf6[m HEAD@{54}: rebase (finish): returning to refs/heads/networking
+[33m2348dcf6[m HEAD@{55}: rebase (pick): delete useless
+[33m4a3200a7[m HEAD@{56}: rebase (start): checkout master
+[33md96c6734[m HEAD@{57}: checkout: moving from networking to networking
+[33md96c6734[m HEAD@{58}: merge develop: Merge made by the 'ort' strategy.
+[33me2416ad4[m HEAD@{59}: pull: Fast-forward
+[33m4a3200a7[m HEAD@{60}: rebase (finish): returning to refs/heads/networking
+[33m4a3200a7[m HEAD@{61}: rebase (start): checkout master
+[33me2416ad4[m HEAD@{62}: pull: Fast-forward
+[33m4a3200a7[m HEAD@{63}: rebase (finish): returning to refs/heads/networking
+[33m4a3200a7[m HEAD@{64}: rebase (start): checkout master
+[33me2416ad4[m HEAD@{65}: checkout: moving from develop to networking
+[33m92f9e0c3[m HEAD@{66}: commit: delete useless
+[33m44c796c1[m HEAD@{67}: checkout: moving from develop to develop
+[33m44c796c1[m HEAD@{68}: checkout: moving from networking to develop
+[33me2416ad4[m HEAD@{69}: pull --all: Fast-forward
+[33m44c796c1[m HEAD@{70}: merge develop: Fast-forward
+[33m1f298070[m HEAD@{71}: checkout: moving from master to networking
+[33m4a3200a7[m HEAD@{72}: checkout: moving from develop to master
+[33m44c796c1[m HEAD@{73}: commit: Update readme
+[33m1f298070[m HEAD@{74}: checkout: moving from networking to develop
+[33m1f298070[m HEAD@{75}: checkout: moving from main to networking
+[33m53ab4b5d[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{76}: commit: asd
+[33mcf9a82c7[m HEAD@{77}: commit: asd
+[33mb80a1653[m HEAD@{78}: clone: from https://github.com/TheExploration/team3.git
