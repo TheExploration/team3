@@ -215,7 +215,7 @@ namespace FishNet.Object.Synchronizing
         /// Called after OnStartXXXX has occurred.
         /// </summary>
         /// <param name="asServer">True if OnStartServer was called, false if OnStartClient.</param>
-        internal protected override void OnStartCallback(bool asServer)
+        protected internal override void OnStartCallback(bool asServer)
         {
             base.OnStartCallback(asServer);
             List<CachedOnChange> collection = (asServer) ? _serverOnChanges : _clientOnChanges;
@@ -237,7 +237,7 @@ namespace FishNet.Object.Synchronizing
         /// <param name="writer"></param>
         ///<param name="resetSyncTick">True to set the next time data may sync.</param>
         [APIExclude]
-        internal protected override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
+        protected internal override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
         {
             //If sending all then clear changed and write full.
             if (_sendAll)
@@ -275,7 +275,7 @@ namespace FishNet.Object.Synchronizing
                 _changed.Clear();
             }
         }
-        
+
         /// <summary>
         /// Writers all values if not initial values.
         /// Internal use.
@@ -283,16 +283,16 @@ namespace FishNet.Object.Synchronizing
         /// </summary>
         /// <param name="writer"></param>
         [APIExclude]
-        internal protected override void WriteFull(PooledWriter writer)
+        protected internal override void WriteFull(PooledWriter writer)
         {
             if (!_valuesChanged)
                 return;
 
             base.WriteHeader(writer, false);
-            
+
             //True for full write.
             writer.WriteBoolean(true);
-            
+
             writer.WriteInt32(Collection.Count);
             foreach (KeyValuePair<TKey, TValue> item in Collection)
             {
@@ -306,10 +306,10 @@ namespace FishNet.Object.Synchronizing
         /// Reads and sets the current values for server or client.
         /// </summary>
         [APIExclude]
-        internal protected override void Read(PooledReader reader, bool asServer)
+        protected internal override void Read(PooledReader reader, bool asServer)
         {
             base.SetReadArguments(reader, asServer, out bool newChangeId, out bool asClientHost, out bool canModifyValues);
-            
+
             //True to warn if this object was deinitialized on the server.
             bool deinitialized = (asClientHost && !base.OnStartServerCalled);
             if (deinitialized)
@@ -338,7 +338,7 @@ namespace FishNet.Object.Synchronizing
                 {
                     key = reader.Read<TKey>();
                     value = reader.Read<TValue>();
-                    
+
                     if (canModifyValues)
                         collection[key] = value;
                 }
@@ -352,7 +352,7 @@ namespace FishNet.Object.Synchronizing
                 else if (operation == SyncDictionaryOperation.Remove)
                 {
                     key = reader.Read<TKey>();
-                    
+
                     if (canModifyValues)
                         collection.Remove(key);
                 }
@@ -391,16 +391,22 @@ namespace FishNet.Object.Synchronizing
         /// Resets to initialized values.
         /// </summary>
         [APIExclude]
-        internal protected override void ResetState(bool asServer)
+        protected internal override void ResetState(bool asServer)
         {
             base.ResetState(asServer);
-            _sendAll = false;
-            _changed.Clear();
-            Collection.Clear();
-            _valuesChanged = false;
 
-            foreach (KeyValuePair<TKey, TValue> item in _initialValues)
-                Collection[item.Key] = item.Value;
+            bool canReset = (asServer || !base.IsReadAsClientHost(asServer));
+
+            if (canReset)
+            {
+                _sendAll = false;
+                _changed.Clear();
+                Collection.Clear();
+                _valuesChanged = false;
+
+                foreach (KeyValuePair<TKey, TValue> item in _initialValues)
+                    Collection[item.Key] = item.Value;
+            }
         }
 
         /// <summary>

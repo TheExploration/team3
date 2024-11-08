@@ -196,7 +196,7 @@ namespace FishNet.Object.Synchronizing
         /// Called after OnStartXXXX has occurred.
         /// </summary>
         /// <param name="asServer">True if OnStartServer was called, false if OnStartClient.</param>
-        internal protected override void OnStartCallback(bool asServer)
+        protected internal override void OnStartCallback(bool asServer)
         {
             base.OnStartCallback(asServer);
             List<CachedOnChange> collection = (asServer) ? _serverOnChanges : _clientOnChanges;
@@ -214,7 +214,7 @@ namespace FishNet.Object.Synchronizing
         /// </summary>
         /// <param name="writer"></param>
         ///<param name="resetSyncTick">True to set the next time data may sync.</param>
-        internal protected override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
+        protected internal override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
         {
             //If sending all then clear changed and write full.
             if (_sendAll)
@@ -226,7 +226,7 @@ namespace FishNet.Object.Synchronizing
             else
             {
                 base.WriteDelta(writer, resetSyncTick);
-                
+
                 //False for not full write.
                 writer.WriteBoolean(false);
 
@@ -252,7 +252,7 @@ namespace FishNet.Object.Synchronizing
         /// Writes all values if not initial values.
         /// </summary>
         /// <param name="writer"></param>
-        internal protected override void WriteFull(PooledWriter writer)
+        protected internal override void WriteFull(PooledWriter writer)
         {
             if (!_valuesChanged)
                 return;
@@ -274,10 +274,10 @@ namespace FishNet.Object.Synchronizing
         /// Reads and sets the current values for server or client.
         /// </summary>
         [APIExclude]
-        internal protected override void Read(PooledReader reader, bool asServer)
+        protected internal override void Read(PooledReader reader, bool asServer)
         {
             base.SetReadArguments(reader, asServer, out bool newChangeId, out bool asClientHost, out bool canModifyValues);
-            
+
             //True to warn if this object was deinitialized on the server.
             bool deinitialized = (asClientHost && !base.OnStartServerCalled);
             if (deinitialized)
@@ -301,7 +301,7 @@ namespace FishNet.Object.Synchronizing
                 if (operation == SyncHashSetOperation.Add)
                 {
                     next = reader.Read<T>();
-                    
+
                     if (canModifyValues)
                         collection.Add(next);
                 }
@@ -315,7 +315,7 @@ namespace FishNet.Object.Synchronizing
                 else if (operation == SyncHashSetOperation.Remove)
                 {
                     next = reader.Read<T>();
-                    
+
                     if (canModifyValues)
                         collection.Remove(next);
                 }
@@ -323,7 +323,7 @@ namespace FishNet.Object.Synchronizing
                 else if (operation == SyncHashSetOperation.Update)
                 {
                     next = reader.Read<T>();
-                    
+
                     if (canModifyValues)
                     {
                         collection.Remove(next);
@@ -364,15 +364,21 @@ namespace FishNet.Object.Synchronizing
         /// <summary>
         /// Resets to initialized values.
         /// </summary>
-        internal protected override void ResetState(bool asServer)
+        protected internal override void ResetState(bool asServer)
         {
             base.ResetState(asServer);
-            _sendAll = false;
-            _changed.Clear();
-            Collection.Clear();
 
-            foreach (T item in _initialValues)
-                Collection.Add(item);
+            bool canReset = (asServer || !base.IsReadAsClientHost(asServer));
+
+            if (canReset)
+            {
+                _sendAll = false;
+                _changed.Clear();
+                Collection.Clear();
+
+                foreach (T item in _initialValues)
+                    Collection.Add(item);
+            }
         }
 
         /// <summary>
@@ -545,7 +551,7 @@ namespace FishNet.Object.Synchronizing
                 if (!other.Contains(entry))
                     Remove(entry);
             }
-            
+
             _cache.Clear();
         }
 

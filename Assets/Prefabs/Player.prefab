@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.88, y: 0.54}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -162,8 +162,10 @@ MonoBehaviour:
   NetworkBehaviours:
   - {fileID: 7119391675500313013}
   - {fileID: 5218478365347823023}
-  <InitializedParentNetworkBehaviour>k__BackingField: {fileID: 0}
-  <InitializedNestedNetworkObjects>k__BackingField: []
+  InitializedParentNetworkBehaviour: {fileID: 0}
+  InitializedNestedNetworkObjects: []
+  RuntimeParentNetworkBehaviour: {fileID: 0}
+  RuntimeChildNetworkBehaviours: []
   _isNetworked: 1
   _isSpawnable: 1
   _isGlobal: 0
@@ -210,6 +212,8 @@ MonoBehaviour:
   rb: {fileID: 4111953341003222337}
   canMove: 1
   playerCamera: {fileID: 0}
+  cameraOffset: {x: 0, y: 10, z: -10}
+  smoothSpeed: 0.125
 --- !u!114 &5218478365347823023
 MonoBehaviour:
   m_ObjectHideFlags: 0

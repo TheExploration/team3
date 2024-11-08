@@ -209,7 +209,7 @@ namespace FishNet.Object.Synchronizing
         /// Writes all changed values.
         /// </summary>
         ///<param name="resetSyncTick">True to set the next time data may sync.</param>
-        internal protected override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
+        protected internal override void WriteDelta(PooledWriter writer, bool resetSyncTick = true)
         {
             base.WriteDelta(writer, resetSyncTick);
             writer.WriteInt32(_changed.Count);
@@ -237,7 +237,7 @@ namespace FishNet.Object.Synchronizing
         /// <summary>
         /// Writes all values.
         /// </summary>
-        internal protected override void WriteFull(PooledWriter writer)
+        protected internal override void WriteFull(PooledWriter writer)
         {
             //Only write full if a timer is running.
             if (Remaining <= 0f)
@@ -270,11 +270,13 @@ namespace FishNet.Object.Synchronizing
         /// Reads and sets the current values for server or client.
         /// </summary>
         [APIExclude]
-        internal protected override void Read(PooledReader reader, bool asServer)
+        protected internal override void Read(PooledReader reader, bool asServer)
         {
             base.SetReadArguments(reader, asServer, out bool newChangeId, out bool asClientHost, out bool canModifyValues);
 
             int changes = reader.ReadInt32();
+            //Has previous value if should invoke finished.
+            float? finishedPrevious = null;
 
             for (int i = 0; i < changes; i++)
             {
@@ -292,7 +294,17 @@ namespace FishNet.Object.Synchronizing
                     }
 
                     if (newChangeId)
+                    {
                         InvokeOnChange(op, -1f, next, asServer);
+                        /* If next is 0 then that means the timer
+                         * expired on the same tick it was started.
+                         * This can be true depending on when in code
+                         * the server starts the timer.
+                         *
+                         * When 0 also invoke finished. */
+                        if (next == 0)
+                            finishedPrevious = duration;
+                    }
                 }
                 else if (op == SyncTimerOperation.Pause || op == SyncTimerOperation.PauseUpdated || op == SyncTimerOperation.Unpause)
                 {
@@ -348,6 +360,8 @@ namespace FishNet.Object.Synchronizing
 
             if (newChangeId && changes > 0)
                 InvokeOnChange(SyncTimerOperation.Complete, -1f, -1f, false);
+            if (finishedPrevious.HasValue)
+                InvokeFinished(finishedPrevious.Value);
         }
 
         /// <summary>
@@ -384,7 +398,7 @@ namespace FishNet.Object.Synchronizing
         /// Called after OnStartXXXX has occurred.
         /// </summary>
         /// <param name="asServer">True if OnStartServer was called, false if OnStartClient.</param>
-        internal protected override void OnStartCallback(bool asServer)
+        protected internal override void OnStartCallback(bool asServer)
         {
             base.OnStartCallback(asServer);
             List<ChangeData> collection = (asServer) ? _serverOnChanges : _clientOnChanges;
@@ -446,6 +460,15 @@ namespace FishNet.Object.Synchronizing
              * for some but at this time I'm unable to think of any
              * problems. */
             Remaining = 0f;
+            InvokeFinished(prev);
+        }
+
+        /// <summary>
+        /// Invokes SyncTimer finished a previous value.
+        /// </summary>
+        /// <param name="prev"></param>
+        private void InvokeFinished(float prev)
+        {
             if (base.NetworkManager.IsServerStarted)
                 OnChange?.Invoke(SyncTimerOperation.Finished, prev, 0f, true);
             if (base.NetworkManager.IsClientStarted)
