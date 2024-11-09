@@ -29,6 +29,7 @@ To reset your local files to match the online Github project, delete your projec
 
 to generate a new project folder.
 
+Test
 
 ## Github Desktop
 
