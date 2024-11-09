@@ -9,9 +9,11 @@ Everyone should have team3 git repository cloned already. Open terminal and run 
 
 1. Open the project folder 'team3' right click the blank area in the folder and press 'Open in Terminal'
 
+2. Switch to the branch you are working on using `git checkout BRANCH_NAME` BEFORE YOU MAKE CHANGES IN UNITY
+
+
 2. To download the changes from the github repo (run everytime, before you work in Unity) Run: `git pull --all` > downloads all the changes from the github and updates everything locally. 
 
-3. Then switch to the networking branch using `git checkout BRANCH_NAME` BEFORE YOU MAKE CHANGES IN UNITY
 
 4. Then you can code and make your changes!
 
