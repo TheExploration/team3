@@ -1,6 +1,8 @@
 # Contributing
 
 
+
+
 ## Command Line/Command Prompt/Cmd
 
 Everyone should have team3 git repository cloned already. Open terminal and run `git clone https://github.com/TheExploration/team3.git`
@@ -19,3 +21,8 @@ Everyone should have team3 git repository cloned already. Open terminal and run 
 To reset your local files to match the online Github project, delete your project folder and run `git clone https://github.com/TheExploration/team3.git`
 
 to generate a new project folder.
+
+
+## Github Desktop
+
+...
