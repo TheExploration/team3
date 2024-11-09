@@ -20,7 +20,7 @@ run `git clone https://github.com/TheExploration/team3.git`
 
 5. To push your updated version to the Github, CLOSE UNITY FIRST, run `git checkout master`, then run `git pull`, then `git checkout BRANCH_NAME`, 
 
-then run `git add .`, then `git commit -m "update message"`, then `git merge master`, follow the instructions it gives you, then run `git push -u` and it should ask you to sign in to github, then the code will be uploaded online for everyone. 
+then run `git add .`, then `git commit -m "update message"`, then `git merge master`, follow the instructions it gives you, then run `git push -u` and it should ask you to sign in to github, then the code will be uploaded online for everyone. a
 
 Merge conflicts for the scene file use always use --take-ours.
 
