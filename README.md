@@ -1,11 +1,5 @@
 # Contributing
 
-Either Use Command Line Steps or Github Desktop
-
-## Github Desktop
-
-...
-
 
 ## Command Line/Command Prompt/Cmd
 
