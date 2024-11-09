@@ -22,6 +22,8 @@ run `git clone https://github.com/TheExploration/team3.git`
 
 then run `git add .`, then `git commit -m "update message"`, then `git merge master`, follow the instructions it gives you, then run `git push -u` and it should ask you to sign in to github, then the code will be uploaded online for everyone. 
 
+Merge conflicts for the scene file use always use --take-ours.
+
 ##### IF ANYONE RUNS INTO CONFLICTS WITH MERGING:
 To reset your local files to match the online Github project, delete your project folder and run `git clone https://github.com/TheExploration/team3.git`
 
