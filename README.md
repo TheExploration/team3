@@ -5,7 +5,9 @@
 
 ## Command Line/Command Prompt/Cmd
 
-Everyone should have team3 git repository cloned already. Open terminal and run `git clone https://github.com/TheExploration/team3.git`
+Everyone should have team3 git repository cloned already. Open terminal and 
+
+run `git clone https://github.com/TheExploration/team3.git`
 
 1. Open the project folder 'team3' right click the blank area in the folder and press 'Open in Terminal'
 
