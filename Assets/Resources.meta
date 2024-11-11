@@ -1,14 +1,6 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Resources.meta
 guid: be583f1e49a118848900e9a02947e2cf
-========
-<<<<<<<< HEAD:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
-guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
-========
-guid: a56371fe74eea8142928ef92efde76f5
->>>>>>>> master:Assets/Scenes/Test.meta
 folderAsset: yes
->>>>>>>> master:Assets/Scenes/Test.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
