@@ -20,7 +20,7 @@ run `git clone https://github.com/TheExploration/team3.git`
 5. To push your updated version to the Github, CLOSE UNITY FIRST, run `git checkout master` (switch branch), then run `git pull` (update the master branch if there were changes), and then switch back to your branch with `git checkout YOUR_BRANCH`
 
 
-    1. then run `git add .`, then `git commit -m "update message"`, then `git merge master`, follow the instructions/resolve conflicts, then run `git push -u` and it should ask you to sign in to github. 
+    1. then run `git add .`, then `git commit -m "update message"`, then `git merge master`, follow the instructions/resolve conflicts, then run `git push -u` and it should ask you to sign in to github. The first time you push a new branch git will say to `git push --set-upstream origin YOUR_BRANCH` so just follow that.
 
 
 

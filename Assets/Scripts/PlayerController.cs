@@ -19,10 +19,16 @@ public class PlayerController : NetworkBehaviour
  
     [SerializeField]
     private Camera playerCamera;
+    
+    [SerializeField]
+    private float bufferZone = 1000f;      // Maximum pixel distance from the player
+    
+    [SerializeField]
+    private float smoothSpeed = 100f;      // Speed at which the camera follows
+
  
     
     public Vector3 cameraOffset = new Vector3(0, 10, -10); // Offset for the camera
-    public float smoothSpeed = 0.125f;  // Speed for smooth camera follow
     
     private Vector3 movement;
  
@@ -58,18 +64,31 @@ public class PlayerController : NetworkBehaviour
             RotateTowardsMouse();
         }
         
-        FollowPlayerWithCamera();
+        
 
+    }
+
+    void LateUpdate()
+    {
+        FollowPlayerWithCamera();
     }
     private void RotateTowardsMouse()
     {
-        // Step 1: Get the screen center and mouse position
-        Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0);
-        Vector3 mousePosition = Input.mousePosition;
-
-        // Step 2: Calculate direction and angle
-        Vector3 direction = mousePosition - screenCenter;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        
+        
+        // Get the screen positions of the object and the mouse
+        Vector3 objectScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mouseScreenPosition = Input.mousePosition;
+        
+        
+        // Calculate the direction vector from the object to the mouse
+        Vector2 direction = (mouseScreenPosition - objectScreenPosition).normalized;
+        
+        // Use the right direction as the reference
+        Vector2 referenceDirection = Vector2.right;
+        
+        // Calculate the angle between the reference direction and the direction to the mouse
+        float angle = Vector2.SignedAngle(referenceDirection, direction);
 
         // Step 3: Apply the rotation on the Z-axis
         transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -89,12 +108,23 @@ public class PlayerController : NetworkBehaviour
     
     private void FollowPlayerWithCamera()
     {
-        // Check if the camera is assigned
-        if (playerCamera != null)
+        if (playerCamera != null) 
         {
-            // Calculate the target position based on the player position and offset
-            Vector3 targetPosition = transform.position + cameraOffset;
-            
+            // Get the player's position in screen space
+            Vector3 playerScreenPosition = playerCamera.WorldToScreenPoint(transform.position);
+
+            // Calculate the mouse offset from the player's screen position
+            Vector2 mouseOffset = (Vector2)Input.mousePosition - (Vector2)playerScreenPosition;
+
+            // Clamp the offset to the buffer zone in screen space
+            mouseOffset = Vector2.ClampMagnitude(mouseOffset, bufferZone);
+
+            // Convert the clamped screen-space offset to a world-space offset
+            Vector3 offsetWorldSpace = playerCamera.ScreenToWorldPoint(new Vector3(playerScreenPosition.x + mouseOffset.x, playerScreenPosition.y + mouseOffset.y, transform.position.y));
+        
+            // Calculate the target position by adjusting only the X and Z coordinates
+            Vector3 targetPosition = new Vector3(offsetWorldSpace.x, playerCamera.transform.position.y, offsetWorldSpace.z);
+
             // Smoothly move the camera towards the target position
             playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetPosition, smoothSpeed);
         }

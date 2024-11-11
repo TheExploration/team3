@@ -46,7 +46,7 @@ public class Networking : MonoBehaviour
             return;
 
         _joinCode = await StartHostWithRelay();
-        _displayJoin.text = _joinCode;
+        _displayJoin.text = "Join Code: " +_joinCode;
     }
     
     
