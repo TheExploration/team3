@@ -9,7 +9,7 @@ public class PlayerController : NetworkBehaviour
 {
     [Header("Base setup")]
     [SerializeField]
-    private float moveSpeed = 5f;
+    private float moveSpeed = 2f;
  
     [SerializeField]
     private Rigidbody rb;
@@ -21,7 +21,7 @@ public class PlayerController : NetworkBehaviour
     private Camera playerCamera;
     
     [SerializeField]
-    private float bufferZone = 1000f;      // Maximum pixel distance from the player
+    private float bufferZone = 1f;      // Maximum pixel distance from the player
     
     [SerializeField]
     private float smoothSpeed = 100f;      // Speed at which the camera follows
@@ -126,7 +126,7 @@ public class PlayerController : NetworkBehaviour
             Vector3 targetPosition = new Vector3(offsetWorldSpace.x, playerCamera.transform.position.y, offsetWorldSpace.z);
 
             // Smoothly move the camera towards the target position
-            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetPosition, smoothSpeed);
+            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetPosition, smoothSpeed* Time.deltaTime);
         }
     }
 }
