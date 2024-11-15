@@ -136,8 +136,8 @@ Transform:
   m_GameObject: {fileID: 7806277364351598450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 3}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 531660942592052328}
@@ -170,7 +170,9 @@ MonoBehaviour:
   _isSpawnable: 1
   _isGlobal: 0
   _initializeOrder: 0
+  _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
+  _initializedValusSet: 1
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -190,9 +192,9 @@ MonoBehaviour:
   <AssetPathHash>k__BackingField: 7807759643866311769
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 1, z: 0}
+    Position: {x: 0, y: 0.2, z: 0}
     Rotation: {x: 0, y: 1, z: 0, w: 0}
-    LocalScale: {x: 1, y: 1, z: 3}
+    LocalScale: {x: 0.5, y: 0.5, z: 0.5}
 --- !u!114 &7119391675500313013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,12 +210,13 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 5415303462613565751}
   _networkObjectCache: {fileID: 5415303462613565751}
-  moveSpeed: 5
+  moveSpeed: 2
   rb: {fileID: 4111953341003222337}
   canMove: 1
   playerCamera: {fileID: 0}
-  cameraOffset: {x: 0, y: 10, z: -10}
+  bufferZone: 1000
   smoothSpeed: 0.125
+  cameraOffset: {x: 0, y: 10, z: -10}
 --- !u!114 &5218478365347823023
 MonoBehaviour:
   m_ObjectHideFlags: 0
