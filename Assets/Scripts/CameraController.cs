@@ -8,6 +8,8 @@ public class CameraController : MonoBehaviour
     [SerializeField, HideInInspector]
     Camera _camera;
     
+
+    
     // Start is called before the first frame update
     void OnValidate()
     {

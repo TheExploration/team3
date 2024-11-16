@@ -9,7 +9,7 @@ public class PlayerController : NetworkBehaviour
 {
     [Header("Base setup")]
     [SerializeField]
-    private float moveSpeed = 2f;
+    private float moveSpeed = 100f;
  
     [SerializeField]
     private Rigidbody rb;
@@ -25,11 +25,8 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private float bufferZone = 1f;      // Maximum pixel distance from the player
     
-    public float smoothSpeed = 15f; // Adjust as needed
-
-    private Vector3 smoothPosition;
-    private Vector3 snappedPosition;
-    private Vector3 offset;
+    private Vector3 snappedPosition;  // The camera's snapped position
+    private Vector2 subpixelOffset;   // The offset to apply in the shader
 
     
     
@@ -41,6 +38,18 @@ public class PlayerController : NetworkBehaviour
         if (base.IsOwner)
         {
             targetCamera = Camera.main;
+            // Find the RawImageOffsetController in the scene
+            RawImageOffsetController offsetController = FindObjectOfType<RawImageOffsetController>();
+
+            if (offsetController != null)
+            {
+                // Pass the player's transform to the RawImageOffsetController
+                offsetController.SetPlayerTransform(this.transform);
+            }
+            else
+            {
+                Debug.LogError("RawImageOffsetController not found in the scene.");
+            }
             
         }
         else
@@ -114,30 +123,26 @@ public class PlayerController : NetworkBehaviour
         if (targetCamera == null) return; // Ensure the camera is assigned
 
         // Get the player's position
-        Vector3 targetPosition = transform.position;
+        Vector3 playerPosition = transform.position;
 
-// Maintain the camera's current y position
-        targetPosition.y = targetCamera.transform.position.y;
+        // Maintain the camera's current y position
+        playerPosition.y = targetCamera.transform.position.y;
 
-        // Move the camera towards the player's position
-        Vector3 movedPosition = Vector3.MoveTowards(
-            targetCamera.transform.position,
-            targetPosition,
-            10f * Time.deltaTime
-        );
+        
+        // Calculate the snap value (size of one pixel in world units)
+        float snapValue = 1f / pixelsPerUnit;
 
-        // Debug: Log positions before snapping
-        Debug.Log($"Before Snapping - Camera Pos: {targetCamera.transform.position}, Moved Pos: {movedPosition}");
+        // Snap the camera's position to the pixel grid
+        snappedPosition.x = Mathf.Round(playerPosition.x / snapValue) * snapValue;
+        snappedPosition.z = Mathf.Round(playerPosition.z / snapValue) * snapValue;
+        snappedPosition.y = targetCamera.transform.position.y; // Keep Y (depth) constant
+        
+        
+        // Update the camera's position
+        targetCamera.transform.position = snappedPosition;
 
-        // Snap the moved camera position to the pixel grid
-        movedPosition.x = Mathf.Round(movedPosition.x * pixelsPerUnit) / pixelsPerUnit;
-        movedPosition.z = Mathf.Round(movedPosition.z * pixelsPerUnit) / pixelsPerUnit;
-
-        // Debug: Log positions after snapping
-        Debug.Log($"After Snapping - Moved Pos: {movedPosition}");
-        movedPosition.y = targetCamera.transform.position.y;
-// Update the camera's position
-        targetCamera.transform.position = movedPosition;
+        
+        
         
     }
 }

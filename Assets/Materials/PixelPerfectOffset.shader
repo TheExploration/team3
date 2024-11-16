@@ -7,9 +7,6 @@ Shader "Custom/PixelPerfectOffset"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
-        LOD 100
-
         Pass
         {
             ZTest Always Cull Off ZWrite Off
