@@ -18,17 +18,20 @@ public class PlayerController : NetworkBehaviour
     public bool canMove = true;
  
     [SerializeField]
-    private Camera playerCamera;
+    private Camera targetCamera;
+    
+    public float pixelsPerUnit = 32f; // Match this to your game's PPU
     
     [SerializeField]
     private float bufferZone = 1f;      // Maximum pixel distance from the player
     
-    [SerializeField]
-    private float smoothSpeed = 100f;      // Speed at which the camera follows
+    public float smoothSpeed = 15f; // Adjust as needed
 
- 
+    private Vector3 smoothPosition;
+    private Vector3 snappedPosition;
+    private Vector3 offset;
+
     
-    public Vector3 cameraOffset = new Vector3(0, 10, -10); // Offset for the camera
     
     private Vector3 movement;
  
@@ -37,7 +40,7 @@ public class PlayerController : NetworkBehaviour
         base.OnStartClient();
         if (base.IsOwner)
         {
-            playerCamera = Camera.main;
+            targetCamera = Camera.main;
             
         }
         else
@@ -108,25 +111,33 @@ public class PlayerController : NetworkBehaviour
     
     private void FollowPlayerWithCamera()
     {
-        if (playerCamera != null) 
-        {
-            // Get the player's position in screen space
-            Vector3 playerScreenPosition = playerCamera.WorldToScreenPoint(transform.position);
+        if (targetCamera == null) return; // Ensure the camera is assigned
 
-            // Calculate the mouse offset from the player's screen position
-            Vector2 mouseOffset = (Vector2)Input.mousePosition - (Vector2)playerScreenPosition;
+        // Get the player's position
+        Vector3 targetPosition = transform.position;
 
-            // Clamp the offset to the buffer zone in screen space
-            mouseOffset = Vector2.ClampMagnitude(mouseOffset, bufferZone);
+// Maintain the camera's current y position
+        targetPosition.y = targetCamera.transform.position.y;
 
-            // Convert the clamped screen-space offset to a world-space offset
-            Vector3 offsetWorldSpace = playerCamera.ScreenToWorldPoint(new Vector3(playerScreenPosition.x + mouseOffset.x, playerScreenPosition.y + mouseOffset.y, transform.position.y));
+        // Move the camera towards the player's position
+        Vector3 movedPosition = Vector3.MoveTowards(
+            targetCamera.transform.position,
+            targetPosition,
+            10f * Time.deltaTime
+        );
+
+        // Debug: Log positions before snapping
+        Debug.Log($"Before Snapping - Camera Pos: {targetCamera.transform.position}, Moved Pos: {movedPosition}");
+
+        // Snap the moved camera position to the pixel grid
+        movedPosition.x = Mathf.Round(movedPosition.x * pixelsPerUnit) / pixelsPerUnit;
+        movedPosition.z = Mathf.Round(movedPosition.z * pixelsPerUnit) / pixelsPerUnit;
+
+        // Debug: Log positions after snapping
+        Debug.Log($"After Snapping - Moved Pos: {movedPosition}");
+        movedPosition.y = targetCamera.transform.position.y;
+// Update the camera's position
+        targetCamera.transform.position = movedPosition;
         
-            // Calculate the target position by adjusting only the X and Z coordinates
-            Vector3 targetPosition = new Vector3(offsetWorldSpace.x, playerCamera.transform.position.y, offsetWorldSpace.z);
-
-            // Smoothly move the camera towards the target position
-            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetPosition, smoothSpeed* Time.deltaTime);
-        }
     }
 }
