@@ -9,7 +9,7 @@ public class PlayerController : NetworkBehaviour
 {
     [Header("Base setup")]
     [SerializeField]
-    private float moveSpeed = 2f;
+    private float moveSpeed = 100f;
  
     [SerializeField]
     private Rigidbody rb;
@@ -18,17 +18,18 @@ public class PlayerController : NetworkBehaviour
     public bool canMove = true;
  
     [SerializeField]
-    private Camera playerCamera;
+    private Camera targetCamera;
+    
+    public float pixelsPerUnit = 32f; // Match this to your game's PPU
     
     [SerializeField]
     private float bufferZone = 1f;      // Maximum pixel distance from the player
     
-    [SerializeField]
-    private float smoothSpeed = 100f;      // Speed at which the camera follows
+    private Vector3 snappedPosition;  // The camera's snapped position
+    private Vector2 subpixelOffset;   // The offset to apply in the shader
 
- 
-    
-    public Vector3 cameraOffset = new Vector3(0, 10, -10); // Offset for the camera
+    // Reference to your material
+    public Material pixelOffsetMaterial;
     
     private Vector3 movement;
  
@@ -37,8 +38,8 @@ public class PlayerController : NetworkBehaviour
         base.OnStartClient();
         if (base.IsOwner)
         {
-            playerCamera = Camera.main;
-            
+            targetCamera = Camera.main;
+           
         }
         else
         {
@@ -61,7 +62,7 @@ public class PlayerController : NetworkBehaviour
             // Get movement input
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.z = Input.GetAxisRaw("Vertical");
-            RotateTowardsMouse();
+            //RotateTowardsMouse();
         }
         
         
@@ -78,7 +79,11 @@ public class PlayerController : NetworkBehaviour
         
         // Get the screen positions of the object and the mouse
         Vector3 objectScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 mouseScreenPosition = Input.mousePosition;
+        Vector3 mouseScreenPosition = new Vector3 (Input.mousePosition.x / Screen.width * 180f,
+                                                    Input.mousePosition.y / Screen.height*180f,
+                                                    Input.mousePosition.z );
+        
+       
         
         
         // Calculate the direction vector from the object to the mouse
@@ -108,25 +113,56 @@ public class PlayerController : NetworkBehaviour
     
     private void FollowPlayerWithCamera()
     {
-        if (playerCamera != null) 
-        {
-            // Get the player's position in screen space
-            Vector3 playerScreenPosition = playerCamera.WorldToScreenPoint(transform.position);
+        if (targetCamera == null) return; // Ensure the camera is assigned
 
-            // Calculate the mouse offset from the player's screen position
-            Vector2 mouseOffset = (Vector2)Input.mousePosition - (Vector2)playerScreenPosition;
+        // Get the player's position
+        Vector3 playerPosition = transform.position;
 
-            // Clamp the offset to the buffer zone in screen space
-            mouseOffset = Vector2.ClampMagnitude(mouseOffset, bufferZone);
-
-            // Convert the clamped screen-space offset to a world-space offset
-            Vector3 offsetWorldSpace = playerCamera.ScreenToWorldPoint(new Vector3(playerScreenPosition.x + mouseOffset.x, playerScreenPosition.y + mouseOffset.y, transform.position.y));
+        // Maintain the camera's current y position
+        playerPosition.y = targetCamera.transform.position.y;
+        playerPosition.z -= 6f;
+   
         
-            // Calculate the target position by adjusting only the X and Z coordinates
-            Vector3 targetPosition = new Vector3(offsetWorldSpace.x, playerCamera.transform.position.y, offsetWorldSpace.z);
+        // Calculate the snap value (size of one pixel in world units)
+        float snapValue = 1f / pixelsPerUnit;
 
-            // Smoothly move the camera towards the target position
-            playerCamera.transform.position = Vector3.Lerp(playerCamera.transform.position, targetPosition, smoothSpeed* Time.deltaTime);
-        }
+        // Snap the camera's position to the pixel grid
+        snappedPosition.x = Mathf.Round(playerPosition.x / snapValue) * snapValue;
+        snappedPosition.z = Mathf.Round(playerPosition.z / snapValue) * snapValue;
+        snappedPosition.y = targetCamera.transform.position.y; // Keep Y (depth) constant
+        
+        
+        // Update the camera's position
+        
+        targetCamera.transform.position = snappedPosition;
+
+        
+        // Calculate the subpixel offset
+        Vector2 subpixelOffset = new Vector2(
+            playerPosition.x - snappedPosition.x,
+            playerPosition.z - snappedPosition.z
+        );
+        
+        // Snap the camera position to the pixel grid
+        float orthographicSize = targetCamera.orthographicSize;
+        
+        // Convert to pixels
+        float pixelsPerUnitX = 180f / (targetCamera.aspect * orthographicSize * 2f);
+        float pixelsPerUnitY = 180f / (orthographicSize * 2f);
+        
+        Vector2 subpixelOffsetPixels = new Vector2(
+            subpixelOffset.x * pixelsPerUnitX,
+            subpixelOffset.y * pixelsPerUnitY
+        );
+        
+        Vector2 subpixelOffsetUV = new Vector2(
+            subpixelOffsetPixels.x / 180f,
+            subpixelOffsetPixels.y / 180f
+        );
+
+        
+        // In your update function or wherever appropriate
+        pixelOffsetMaterial.SetVector("_SubpixelOffset", subpixelOffsetUV);
+        
     }
 }

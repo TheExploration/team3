@@ -7,6 +7,9 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField, HideInInspector]
     Camera _camera;
+    
+
+    
     // Start is called before the first frame update
     void OnValidate()
     {
@@ -19,6 +22,8 @@ public class CameraController : MonoBehaviour
     // OnProjectionChanged event.
     void LateUpdate()
     {
+        
+        
         // Get the default projection matrix for this camera.
         _camera.ResetProjectionMatrix();
         var mat = _camera.projectionMatrix;
