@@ -28,7 +28,8 @@ public class PlayerController : NetworkBehaviour
     private Vector3 snappedPosition;  // The camera's snapped position
     private Vector2 subpixelOffset;   // The offset to apply in the shader
 
-    
+    // Reference to your material
+    public Material pixelOffsetMaterial;
     
     private Vector3 movement;
  
@@ -38,19 +39,7 @@ public class PlayerController : NetworkBehaviour
         if (base.IsOwner)
         {
             targetCamera = Camera.main;
-            // Find the RawImageOffsetController in the scene
-            RawImageOffsetController offsetController = FindObjectOfType<RawImageOffsetController>();
-
-            if (offsetController != null)
-            {
-                // Pass the player's transform to the RawImageOffsetController
-                offsetController.SetPlayerTransform(this.transform);
-            }
-            else
-            {
-                Debug.LogError("RawImageOffsetController not found in the scene.");
-            }
-            
+           
         }
         else
         {
@@ -73,7 +62,7 @@ public class PlayerController : NetworkBehaviour
             // Get movement input
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.z = Input.GetAxisRaw("Vertical");
-            RotateTowardsMouse();
+            //RotateTowardsMouse();
         }
         
         
@@ -90,7 +79,11 @@ public class PlayerController : NetworkBehaviour
         
         // Get the screen positions of the object and the mouse
         Vector3 objectScreenPosition = Camera.main.WorldToScreenPoint(transform.position);
-        Vector3 mouseScreenPosition = Input.mousePosition;
+        Vector3 mouseScreenPosition = new Vector3 (Input.mousePosition.x / Screen.width * 180f,
+                                                    Input.mousePosition.y / Screen.height*180f,
+                                                    Input.mousePosition.z );
+        
+       
         
         
         // Calculate the direction vector from the object to the mouse
@@ -127,7 +120,8 @@ public class PlayerController : NetworkBehaviour
 
         // Maintain the camera's current y position
         playerPosition.y = targetCamera.transform.position.y;
-
+        playerPosition.z -= 6f;
+   
         
         // Calculate the snap value (size of one pixel in world units)
         float snapValue = 1f / pixelsPerUnit;
@@ -139,10 +133,36 @@ public class PlayerController : NetworkBehaviour
         
         
         // Update the camera's position
+        
         targetCamera.transform.position = snappedPosition;
 
         
+        // Calculate the subpixel offset
+        Vector2 subpixelOffset = new Vector2(
+            playerPosition.x - snappedPosition.x,
+            playerPosition.z - snappedPosition.z
+        );
         
+        // Snap the camera position to the pixel grid
+        float orthographicSize = targetCamera.orthographicSize;
+        
+        // Convert to pixels
+        float pixelsPerUnitX = 180f / (targetCamera.aspect * orthographicSize * 2f);
+        float pixelsPerUnitY = 180f / (orthographicSize * 2f);
+        
+        Vector2 subpixelOffsetPixels = new Vector2(
+            subpixelOffset.x * pixelsPerUnitX,
+            subpixelOffset.y * pixelsPerUnitY
+        );
+        
+        Vector2 subpixelOffsetUV = new Vector2(
+            subpixelOffsetPixels.x / 180f,
+            subpixelOffsetPixels.y / 180f
+        );
+
+        
+        // In your update function or wherever appropriate
+        pixelOffsetMaterial.SetVector("_SubpixelOffset", subpixelOffsetUV);
         
     }
 }

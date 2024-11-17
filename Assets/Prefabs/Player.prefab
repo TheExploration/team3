@@ -216,6 +216,7 @@ MonoBehaviour:
   targetCamera: {fileID: 0}
   pixelsPerUnit: 32
   bufferZone: 1000
+  pixelOffsetMaterial: {fileID: 2100000, guid: dd8903d1f27932247b984cff232b7ac2, type: 2}
 --- !u!114 &5218478365347823023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +284,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &1807234691055788968
