@@ -308,7 +308,7 @@ Material:
     - _Light: 2
     - _LightBands: 10
     - _LightBandsScale: 0
-    - _LightThreshold: 0
+    - _LightThreshold: 0.611
     - _LightTransmission: 0
     - _LightTransmissionDistortion: 0.25
     - _LightTransmissionIntensity: 1
