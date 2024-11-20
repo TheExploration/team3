@@ -9,6 +9,15 @@
       },
       "hash": "096c8d8214205d040c4869ae0a4d99ac4982d16b"
     },
+    "com.deltation.toon-shader": {
+      "version": "https://github.com/Delt06/urp-toon-shader.git?path=Packages/com.deltation.toon-shader",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.render-pipelines.universal": "12.1.6"
+      },
+      "hash": "6981f7dc931b53a0bd797725f4dac30b824041d7"
+    },
     "com.unity.burst": {
       "version": "1.8.18",
       "depth": 1,
