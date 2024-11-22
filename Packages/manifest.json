@@ -2,6 +2,7 @@
   "dependencies": {
     "com.alven.fishnet.unitytransport": "https://github.com/ooonush/FishyUnityTransport.git?path=Assets/FishNet/Plugins/FishyUnityTransport",
     "com.deltation.toon-shader": "https://github.com/Delt06/urp-toon-shader.git?path=Packages/com.deltation.toon-shader",
+    "com.unity.cinemachine": "2.10.1",
     "com.unity.collab-proxy": "2.5.2",
     "com.unity.editorcoroutines": "1.0.0",
     "com.unity.feature.development": "1.0.1",

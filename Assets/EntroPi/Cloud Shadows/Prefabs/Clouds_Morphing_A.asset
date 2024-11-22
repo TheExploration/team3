@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231418edf53223d4ea079c2ea05ce8b3, type: 3}
+  m_Name: Clouds_Morphing_A
+  m_EditorClassIdentifier: 
+  m_LayerData:
+  - m_IsVisible: 1
+    m_LayerName: Cloud Layer 1
+    m_BlendMode: 0
+    m_Opacity: 0.637
+    m_Coverage: 0.6
+    m_Softness: 0.554
+    m_Speed: 0.25
+    m_Direction: 60
+    m_Texture: {fileID: 2800000, guid: 3771f9535c4ad6d4c8fb4ef63a941479, type: 3}
+    m_TextureTiling: {x: 2, y: 2}
+    m_TextureOffset: {x: 0, y: 0}
+  - m_IsVisible: 1
+    m_LayerName: Cloud Layer 2
+    m_BlendMode: 2
+    m_Opacity: 1
+    m_Coverage: 0.421
+    m_Softness: 0.32
+    m_Speed: 0.5
+    m_Direction: 0
+    m_Texture: {fileID: 2800000, guid: fb2532bfbc2e6eb498e342b76748273a, type: 3}
+    m_TextureTiling: {x: 1, y: 1}
+    m_TextureOffset: {x: 0, y: 0}

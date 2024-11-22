@@ -9,8 +9,8 @@ LightingSettings:
   m_Name: Lighting Settings
   serializedVersion: 6
   m_GIWorkflowMode: 1
-  m_EnableBakedLightmaps: 1
-  m_EnableRealtimeLightmaps: 1
+  m_EnableBakedLightmaps: 0
+  m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
   m_BounceScale: 1
   m_AlbedoBoost: 1
@@ -18,7 +18,7 @@ LightingSettings:
   m_UsingShadowmask: 1
   m_BakeBackend: 2
   m_LightmapMaxSize: 1024
-  m_BakeResolution: 20
+  m_BakeResolution: 3
   m_Padding: 2
   m_LightmapCompression: 3
   m_AO: 0
@@ -32,7 +32,7 @@ LightingSettings:
   m_LightmapParameters: {fileID: 15204, guid: 0000000000000000f000000000000000, type: 0}
   m_ExportTrainingData: 0
   m_TrainingDataDestination: TrainingData
-  m_RealtimeResolution: 20
+  m_RealtimeResolution: 3
   m_ForceWhiteAlbedo: 0
   m_ForceUpdates: 0
   m_FinalGather: 0
