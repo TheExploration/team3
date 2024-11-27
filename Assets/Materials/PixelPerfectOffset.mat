@@ -130,5 +130,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RenderOffset: {r: -0, g: -0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SubpixelOffset: {r: 0.0008305444, g: 0.0014354705, b: 0, a: 0}
+    - _SubpixelOffset: {r: 0.0027398004, g: -0.0016134474, b: 0, a: 0}
   m_BuildTextureStacks: []
