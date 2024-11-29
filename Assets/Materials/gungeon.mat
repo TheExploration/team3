@@ -7,41 +7,52 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WellRoof2
-  m_Shader: {fileID: 4800000, guid: 7633a2fd8a3bed44791c9e952ff86e5d, type: 3}
+  m_Name: gungeon
+  m_Shader: {fileID: 4800000, guid: 733fefdcde0d35f4b822d2935d5a22f4, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - _MK_ALBEDO_MAP
+  - _MK_ALPHA_CLIPPING
   - _MK_ARTISTIC_ANIMATION_STUTTER
-  - _MK_ARTISTIC_HATCHING
   - _MK_ARTISTIC_PROJECTION_SCREEN_SPACE
-  - _MK_DETAIL_BLEND_MIX
-  - _MK_ENVIRONMENT_REFLECTIONS_ADVANCED
-  - _MK_FRESNEL_HIGHLIGHTS
-  - _MK_LIGHT_CEL
-  - _MK_OUTLINE_HULL_CLIP
-  - _MK_OUTLINE_NOISE
+  - _MK_ENVIRONMENT_REFLECTIONS_AMBIENT
+  - _MK_LIGHT_BANDED
   - _MK_RECEIVE_SHADOWS
-  - _MK_SPECULAR_ISOTROPIC
   - _MK_WRAPPED_DIFFUSE
   m_InvalidKeywords:
-  - _FRESNELHIGHLIGHTS_ON
+  - _ALPHACLIPPING_ON
+  - _ALPHATEST_ON
+  - _MK_DETAIL_BLEND_MIX
+  - _MK_PBS_MAP_0
   - _RECEIVESHADOWS_ON
   - _WRAPPEDLIGHTING_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    IGNOREPROJECTOR: False
-    RenderType: Opaque
+    IGNOREPROJECTOR: true
+    RenderType: TransparentCutout
   disabledShaderPasses: []
-  m_LockedProperties: 
+  m_LockedProperties: _AlbedoColor _AlbedoMap _Rim
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _AlbedoMap:
+    - Texture2D_E0E90B4F:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlbedoMap:
+        m_Texture: {fileID: 2800000, guid: 680f49ce27f8fa241bc5c75904db0a65, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 7a93e28158b7d2841a58b1523bc2ba7a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -84,6 +95,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FurMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FurNoise:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _GoochBrightMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -97,11 +116,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HatchingBrightMap:
-        m_Texture: {fileID: 2800000, guid: bf0cfe47fb237ec4eb90305d8ce1eb86, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HatchingDarkMap:
-        m_Texture: {fileID: 2800000, guid: 3fe12e4fc2d8e63418243b1b0f086757, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightMap:
@@ -117,7 +136,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 680f49ce27f8fa241bc5c75904db0a65, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -148,6 +167,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _RampMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RefractionDistortionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _RimRamp:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -157,11 +184,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SketchMap:
-        m_Texture: {fileID: 2800000, guid: f3e5dcc36f63389498c1d7e1ff740915, type: 3}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e637a52a383185b4e801f58943bd32f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularRamp:
@@ -194,30 +225,50 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AdvancedTab: 0
+    - PixelSnap: 0
+    - Vector1_533C9C05: 0
+    - Vector1_911421B8: 0.347
+    - Vector1_A7207CA3: 0
+    - _AdditionalLights: 1
+    - _AdditionalLightsSpecular: 0
+    - _AdvancedTab: 1
     - _AlbedoMapIntensity: 1
-    - _AlphaClipping: 0
-    - _AlphaCutoff: 0.5
+    - _AlphaClip: 1
+    - _AlphaClipping: 1
+    - _AlphaCutoff: 1
+    - _AlphaToMask: 1
+    - _AnisoSpecular: 0
     - _Anisotropy: 0
-    - _Artistic: 2
+    - _Artistic: 0
     - _ArtisticFrequency: 1
     - _ArtisticProjection: 1
     - _Blend: 0
     - _BlendDst: 0
     - _BlendDstAlpha: 0
+    - _BlendModePreserveSpecular: 1
+    - _BlendOp: 0
     - _BlendSrc: 1
     - _BlendSrcAlpha: 1
     - _Brightness: 1
     - _BumpScale: 1
+    - _CellShading: 248
+    - _ClearCoatMask: 0
+    - _ClearCoatSmoothness: 0
+    - _ClipSpace: 1
     - _ColorGrading: 0
-    - _Contrast: 1
-    - _Cutoff: 0.5
+    - _Contrast: 0.77
+    - _Cull: 2
+    - _CustomNormals: 0
+    - _Cutoff: 1
+    - _DepthOffsetFactor: 0
+    - _DepthOffsetUnits: 0
+    - _DetailAlbedoMapScale: 1
     - _DetailBlend: 0
     - _DetailMix: 0.5
     - _DetailNormalMapIntensity: 1
     - _DetailNormalMapScale: 1
     - _Diffuse: 0
-    - _DiffuseSmoothness: 1
+    - _DiffuseSmoothness: 0
     - _DiffuseThresholdOffset: 0.25
     - _Dissolve: 0
     - _DissolveAmount: 0.5
@@ -227,31 +278,44 @@ Material:
     - _DrawnClampMin: 0
     - _DrawnMapScale: 1
     - _DstBlend: 0
-    - _EnvironmentReflections: 2
-    - _FresnelHighlights: 1
+    - _DstBlendAlpha: 0
+    - _Emission: 0
+    - _EnableExternalAlpha: 0
+    - _EnvironmentLightingEnabled: 1
+    - _EnvironmentReflections: 1
+    - _Exponent: 1
+    - _Fog: 1
+    - _Fresnel: 0
+    - _FresnelHighlights: 0
+    - _FresnelSmoothness: 0.577
+    - _FresnelThickness: 0.845
+    - _FurLength: 0.1
+    - _FurStep: 0.1
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GoochRampIntensity: 0.5
-    - _HatchingMapScale: 0.5
+    - _GoochRampIntensity: 0
+    - _HatchingMapScale: 1
+    - _IndexOfRefraction: 0
     - _IndirectFade: 1
-    - _Initialized: 1
+    - _Initialized: 0
     - _InputTab: 1
+    - _Intensity: 1
     - _Iridescence: 0
     - _IridescenceSize: 1
     - _IridescenceSmoothness: 0.5
     - _IridescenceThresholdOffset: 0
-    - _Light: 1
-    - _LightBands: 4
-    - _LightBandsScale: 0.5
-    - _LightThreshold: 0.5
+    - _Light: 2
+    - _LightBands: 5
+    - _LightBandsScale: 0.258
+    - _LightThreshold: 0.513
     - _LightTransmission: 0
     - _LightTransmissionDistortion: 0.25
     - _LightTransmissionIntensity: 1
     - _LightTransmissionSmoothness: 0.5
     - _LightTransmissionThresholdOffset: 0.25
     - _Metallic: 0
-    - _Mode: 0
+    - _Mode: 1
     - _NormalMapIntensity: 1
     - _OcclusionMapIntensity: 1
     - _OcclusionStrength: 1
@@ -260,11 +324,25 @@ Material:
     - _OutlineData: 0
     - _OutlineFadeMax: 2
     - _OutlineFadeMin: 0.25
-    - _OutlineNoise: -1
-    - _OutlineSize: 35
-    - _OutlineTab: 1
+    - _OutlineNoise: 0
+    - _OutlineSize: 5
     - _Parallax: 0.02
+    - _PureShadowColor: 0
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _Ramp0: 0.286
+    - _Ramp1: 0.52
+    - _RampSmoothness: 0.019
+    - _RampTriple: 1
     - _ReceiveShadows: 1
+    - _ReflectionBlend: 0
+    - _ReflectionProbes: 1
+    - _ReflectionSmoothness: 0.196
+    - _Reflections: 0
+    - _RefractionDistortion: 0.1
+    - _RefractionDistortionFade: 0
+    - _RefractionDistortionMapScale: 1
+    - _RefractionTab: 1
     - _RenderFace: 2
     - _RenderPriority: 0
     - _Rim: 0
@@ -272,16 +350,22 @@ Material:
     - _RimSmoothness: 0.5
     - _RimThresholdOffset: 0.25
     - _Roughness: 0.5
+    - _SampleGI: 0
     - _Saturation: 1
-    - _SketchMapScale: 0.42
-    - _Smoothness: 0
+    - _Scale: 0.05
+    - _ShadowMask: 0
+    - _SketchMapScale: 1
+    - _Smoothness: 0.134
     - _SmoothnessTextureChannel: 0
-    - _Specular: 1
+    - _Specular: 0
+    - _SpecularExponent: 64
     - _SpecularHighlights: 1
     - _SpecularIntensity: 1
-    - _SpecularSmoothness: 1
+    - _SpecularSmoothness: 0
+    - _SpecularThreshold: 0.059
     - _SpecularThresholdOffset: 0.25
     - _SrcBlend: 1
+    - _SrcBlendAlpha: 1
     - _Stencil: 1
     - _StencilComp: 8
     - _StencilFail: 0
@@ -290,31 +374,67 @@ Material:
     - _StencilRef: 0
     - _StencilWriteMask: 255
     - _StencilZFail: 0
-    - _StylizeTab: 0
+    - _StylizeTab: 1
     - _Surface: 0
+    - _Threshold1: 0.104
+    - _Threshold2: 0.305
+    - _Threshold3: 0.38
+    - _Threshold4: 0.421
+    - _Threshold5: 0.482
+    - _Threshold6: 0.627
+    - _Threshold7: 0.682
+    - _Threshold8: 0.899
+    - _Threshold9: 0.955
     - _ThresholdMapScale: 1
     - _UVSec: 0
+    - _UseRampMap: 0
     - _VertexAnimation: 0
     - _VertexAnimationIntensity: 0.05
     - _VertexAnimationStutter: 0
+    - _VertexColor: 0
+    - _VertexLit: 0
     - _Workflow: 0
+    - _WorkflowMode: 1
     - _WrappedLighting: 1
     - _ZTest: 4
     - _ZWrite: 1
     m_Colors:
-    - _AlbedoColor: {r: 0.20392156, g: 0.23526724, b: 0.6509804, a: 1}
-    - _Color: {r: 0.20392153, g: 0.23526719, b: 0.6509804, a: 1}
+    - Color_5DF75355: {r: 0, g: 0, b: 0, a: 0}
+    - _AlbedoColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _Color: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
+    - _Color0: {r: 1, g: 0, b: 0, a: 1}
+    - _Color1: {r: 0, g: 1, b: 0, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveBorderColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
     - _GoochBrightColor: {r: 1, g: 1, b: 1, a: 1}
     - _GoochDarkColor: {r: 0, g: 0, b: 0, a: 1}
     - _IridescenceColor: {r: 1, g: 1, b: 1, a: 0.5}
     - _LightTransmissionColor: {r: 1, g: 0.65, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimBrightColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimDarkColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecularColor: {r: 0.20312497, g: 0.20312497, b: 0.20312497, a: 1}
+    - _Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _ShadowTint: {r: 0.020069422, g: 0.029125182, b: 0.38679248, a: 1}
+    - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _VertexAnimationFrequency: {r: 2.5, g: 2.5, b: 2.5, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &2707220759759447187
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

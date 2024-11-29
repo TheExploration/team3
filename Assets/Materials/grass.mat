@@ -35,7 +35,7 @@ Material:
     IGNOREPROJECTOR: true
     RenderType: TransparentCutout
   disabledShaderPasses: []
-  m_LockedProperties: _AlbedoMap _Rim
+  m_LockedProperties: _AlbedoColor _AlbedoMap _Rim
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
