@@ -1,11 +1,8 @@
-﻿#if !FISHNET_STABLE_MODE
-using FishNet.CodeGenerating;
+﻿#if !FISHNET_STABLE_SYNCTYPES
 using FishNet.Documenting;
 using FishNet.Object.Synchronizing.Internal;
 using FishNet.Serializing;
-using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace FishNet.Object.Synchronizing
@@ -288,6 +285,7 @@ namespace FishNet.Object.Synchronizing
 
                     if (canModifyValues)
                     {
+                        SetUpdateTime();
                         Paused = false;
                         Remaining = next;
                         Duration = duration;
@@ -354,6 +352,8 @@ namespace FishNet.Object.Synchronizing
                 }
 
                 Paused = newPauseState;
+                if (!Paused)
+                    SetUpdateTime();
                 if (newChangeId)
                     InvokeOnChange(op, prev, next, asServer);
             }

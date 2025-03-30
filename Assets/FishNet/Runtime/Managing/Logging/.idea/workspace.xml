@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2a15fde8-0392-4565-9072-e6b60fdb16b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../DefaultPrefabObjects.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../DefaultPrefabObjects.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Helpers/GeneralHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Helpers/GeneralHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Helpers/NetworkBehaviourHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Helpers/NetworkBehaviourHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Helpers/ReaderImports.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Helpers/ReaderImports.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/ILCore/FishNetILPP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/ILCore/FishNetILPP.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Processing/Prediction/PredictionProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Processing/Prediction/PredictionProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Processing/QOLAttributeProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Processing/QOLAttributeProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Processing/ReaderProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Processing/ReaderProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Processing/Rpc/RpcProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Processing/Rpc/RpcProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../CodeGenerating/Processing/WriterProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../CodeGenerating/Processing/WriterProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Benchmark ReadMe.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Benchmark ReadMe.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Prefabs/NetworkTransform Benchmark.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Prefabs/NetworkTransform Benchmark.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Scenes/NetworkTransform Benchmark.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Scenes/NetworkTransform Benchmark.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Scripts/MoveRandomly.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Benchmarks/NetworkTransform/Scripts/MoveRandomly.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/ColliderRollback/ColliderRollback Demo README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/ColliderRollback/ColliderRollback Demo README.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/ColliderRollback/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/ColliderRollback/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/CustomSyncType/Custom Struct Sync/StructySync.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/CustomSyncType/Custom Struct Sync/StructySync.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/HashGrid/HashGrid Demo README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/HashGrid/HashGrid Demo README.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/HashGrid/Prefabs/HashGrid_Moving.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/HashGrid/Prefabs/HashGrid_Moving.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/HashGrid/Prefabs/HashGrid_Static.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/HashGrid/Prefabs/HashGrid_Static.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/HashGrid/Scripts/MoveRandomly.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/HashGrid/Scripts/MoveRandomly.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager (Old Examples)/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager (Old Examples)/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager (Old Examples)/Scenes/Replace/ReplaceMainSettings.lighting" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager (Old Examples)/Scenes/Replace/ReplaceMainSettings.lighting" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Additive Scenes READ ME.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Additive Scenes READ ME.txt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_0.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_0.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_Start.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Demos/SceneManager/Additive Scenes/Scenes/AdditiveScenes_Start.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Scripts/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Scripts/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Demos/Scripts/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Edgegap.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Edgegap.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapApiBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapApiBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapAppApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapAppApi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapDeploymentsApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapDeploymentsApi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapIpApi.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/EdgegapIpApi.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Requests/CreateDeploymentRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Requests/CreateDeploymentRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Results/EdgegapErrorResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Results/EdgegapErrorResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Results/EdgegapHttpResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Results/EdgegapHttpResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Results/StopActiveDeploymentResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Api/Models/Results/StopActiveDeploymentResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapBuildUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapBuildUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindow.uss" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindow.uss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindow.uxml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindow.uxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindowMetadata.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindowMetadata.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindowV2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/Editor/EdgegapWindowV2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Plugins/Edgegap/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Plugins/Edgegap/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Configuring/ConfigurationEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/Configuring/ConfigurationEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Configuring/FIshNetGettingStartedEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/Configuring/FIshNetGettingStartedEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Editor/Configuring/ReviewReminderEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Editor/Configuring/ReviewReminderEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/NetworkAnimator/NetworkAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/NetworkAnimator/NetworkAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/NetworkTransform/NetworkTransform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/NetworkTransform/NetworkTransform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Prediction/NetworkCollider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Prediction/NetworkCollider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Prediction/NetworkCollider2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Prediction/NetworkCollider2D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Prediction/RigidbodyPauser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Prediction/RigidbodyPauser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Spawning/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Spawning/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Spawning/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Spawning/PlayerSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Spawning/PlayerSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/BandwidthDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Utility/BandwidthDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/DefaultScene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Utility/DefaultScene.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/DetachableNetworkTickSmoother.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Utility/DetachableNetworkTickSmoother.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/Editor/DetachableNetworkTickSmootherEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Utility/Editor/DetachableNetworkTickSmootherEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/MonoTickSmoother.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Generated/Component/Utility/MonoTickSmoother.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/NetworkTickSmoother.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Generated/Component/Utility/NetworkTickSmoother.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/ClientManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/ClientManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/Object/ClientObjects.RpcLinks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/Object/ClientObjects.RpcLinks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/Object/ClientObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/Object/ClientObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/Object/ObjectCaching.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/Object/ObjectCaching.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Debugging/DebugManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Debugging/DebugManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Debugging/ParseLogger.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Debugging/ParseLogger.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../NetworkManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../NetworkManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Object/ManagedObjects.Spawning.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Object/ManagedObjects.Spawning.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Object/ManagedObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Object/ManagedObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Object/ObjectSpawnType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Object/ObjectSpawnType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Observing/ObserverManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Observing/ObserverManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prediction/Editor/PredictionManagerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Prediction/Editor/PredictionManagerEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Prediction/PredictionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Prediction/PredictionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scened/DefaultSceneProcessor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Scened/DefaultSceneProcessor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scened/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Scened/SceneManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scened/SceneProcessorBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Scened/SceneProcessorBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Object/ServerObjects.Observers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Object/ServerObjects.Observers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Object/ServerObjects.Parsing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Object/ServerObjects.Parsing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/Object/ServerObjects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/Object/ServerObjects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/ServerManager.QOL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/ServerManager.QOL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/ServerManager.RpcLinks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/ServerManager.RpcLinks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/ServerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/ServerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Statistic/NetworkTrafficStatistics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Statistic/NetworkTrafficStatistics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Timing/PreciseTick.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Timing/PreciseTick.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Timing/TimeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Timing/TimeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transporting/LatencySimulator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Transporting/LatencySimulator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transporting/SplitReader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../Transporting/SplitReader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Attributes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Attributes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Editor/NetworkObjectEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Editor/NetworkObjectEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Helping/RpcLink.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Helping/RpcLink.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.Callbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.Callbacks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.Prediction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.Prediction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.QOL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.QOL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.RPCLinks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.RPCLinks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.RPCs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.RPCs.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.SyncTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.SyncTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkObject.Callbacks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkObject.Callbacks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkObject.Prediction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkObject.Prediction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkObject.QOL.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkObject.QOL.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/NetworkObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/NetworkObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Prediction/MoveRates.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Prediction/MoveRates.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Prediction/PredictionRigidbody2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Prediction/PredictionRigidbody2D.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Prediction/PredictionTickSmoother.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Prediction/PredictionTickSmoother.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Prediction/TransformTickSmoother.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Prediction/TransformTickSmoother.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/ReplicateState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/ReplicateState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/RpcLinkType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/RpcLinkType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncHashset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncHashset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncStopwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncStopwatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncVar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/Beta/SyncVar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/SyncDictionary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/SyncDictionary.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/SyncHashset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/SyncHashset.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/SyncList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/SyncList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/SyncStopwatch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/SyncStopwatch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/SyncTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/SyncTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/Synchronizing/SyncVar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/Synchronizing/SyncVar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/TransformProperties.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/TransformProperties.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Object/TransformPropertiesFlag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Object/TransformPropertiesFlag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Observing/Conditions/DistanceCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Observing/Conditions/DistanceCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Observing/Conditions/SceneCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Observing/Conditions/SceneCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Observing/NetworkObserver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Observing/NetworkObserver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Observing/ObserverCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Observing/ObserverCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/ColliderRollback/Scripts/RollbackPhysicsType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/ColliderRollback/Scripts/RollbackPhysicsType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Bytes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Bytes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Editing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Editing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Quaternions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Quaternions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Strings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Strings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Transforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Transforms.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Types/BasicQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Types/BasicQueue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Types/ResettableRingBuffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Types/ResettableRingBuffer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Types/RingBuffer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Plugins/GameKit/Dependencies/Utilities/Types/RingBuffer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/DeltaTypes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/DeltaTypes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/Helping/Broadcasts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/Helping/Broadcasts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/Helping/Quaternion32.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/Helping/Quaternion32.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/Reader.Delta.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/Reader.Delta.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/Reader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/Reader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/ReaderPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/ReaderPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/ReaderStatics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/ReaderStatics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/Writer.Delta.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/Writer.Delta.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/Writer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/Writer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/WriterPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/WriterPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Serializing/WriterStatics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Serializing/WriterStatics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Transporting/Transport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Transporting/Transport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Transporting/Transports/Multipass/Multipass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Transporting/Transports/Multipass/Multipass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Transporting/Transports/Tugboat/Core/CommonSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Transporting/Transports/Tugboat/Core/CommonSocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Transporting/Transports/Tugboat/Core/ServerSocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Transporting/Transports/Tugboat/Core/ServerSocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Transporting/Transports/Tugboat/Tugboat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Transporting/Transports/Tugboat/Tugboat.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/AdaptiveInterpolationType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Utility/AdaptiveInterpolationType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/AdaptiveLocalTransformSmoother.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Utility/AdaptiveLocalTransformSmoother.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/ChildTransformTickSmoother.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/ChildTransformTickSmoother.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/Extension/Transforms.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Utility/Extension/Transforms.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/LocalTransformTickSmoother.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Utility/LocalTransformTickSmoother.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/Performance/DefaultObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Utility/Performance/DefaultObjectPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Utility/Template/TickNetworkBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Utility/Template/TickNetworkBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Upgrading/MirrorUpgrade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Upgrading/MirrorUpgrade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Materials/PixelPerfectOffset.mat" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Materials/PixelPerfectOffset.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Scenes/Game/PostProcessing Profile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Scenes/Game/PostProcessing Profile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Scripts/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Scripts/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Scripts/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_MK/MKToon/ExamplesBuiltin.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_MK/MKToon/ExamplesInc.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_MK/MKToon/ExamplesURP.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_MK/MKToon/ExamplesURP_2023_2_Or_Newer.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_MK/MKToon/ShadersBuiltIn.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../_MK/MKToon/ShadersURP.unitypackage.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/LevelLoggingConfiguration.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2v1qOoNABduAmEWjEVcsjyaWCPE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "player",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a15fde8-0392-4565-9072-e6b60fdb16b4" name="Changes" comment="" />
+      <created>1743322899510</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1743322899510</updated>
+      <workItem from="1743322900864" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
