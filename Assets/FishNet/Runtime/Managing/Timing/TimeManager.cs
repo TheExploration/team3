@@ -664,12 +664,6 @@ namespace FishNet.Managing.Timing
                 NetworkManagerExtensions.LogWarning($"Simulation delta cannot be 0. Network timing will not continue.");
                 return;
             }
-            ////If client needs to slow down then increase delta very slightly.
-            //if (!isServer && NetworkManager.PredictionManager.ReduceClientTiming)
-            //{
-            //    Debug.LogWarning($"Slowing down.");
-            //    timePerSimulation *= 1.05f;
-            //}
 
             double time = Time.unscaledDeltaTime;
 
@@ -916,8 +910,8 @@ namespace FishNet.Managing.Timing
         public double TimePassed(PreciseTick preciseTick, bool allowNegative = false)
         {
             PreciseTick currentPt = GetPreciseTick(TickType.Tick);
-
-            long tickDifference = (currentPt.Tick - preciseTick.Tick);
+            
+            long tickDifference = ((long)currentPt.Tick - (long)preciseTick.Tick);
             double percentDifference = (currentPt.PercentAsDouble - preciseTick.PercentAsDouble);
 
             /* If tickDifference is less than 0 or tickDifference and percentDifference are 0 or less
@@ -966,7 +960,7 @@ namespace FishNet.Managing.Timing
         /// <summary>
         /// Converts time to ticks.
         /// </summary>
-        /// <param name="time">Time to convert.</param>
+        /// <param name="time">Time to convert as decimal.</param>
         /// <returns></returns>
         
         public uint TimeToTicks(double time, TickRounding rounding = TickRounding.RoundNearest)
@@ -980,22 +974,26 @@ namespace FishNet.Managing.Timing
             else
                 return (uint)Math.Ceiling(result);
         }
+
+        /// <summary>
+        /// Converts time to ticks.
+        /// </summary>
+        /// <param name="time">Time to convert as whole (milliseconds)</param>
+        /// <returns></returns>
+        
+        public uint TimeToTicks(long time, TickRounding rounding = TickRounding.RoundNearest)
+        {
+            double dTime = ((double)time / 1000d);
+            return TimeToTicks(dTime, rounding);
+        }
+
         
         /// <summary>
         /// Converts time to a PreciseTick.
         /// </summary>
         /// <param name="time">Time to convert.</param>
         /// <returns></returns>
-        public PreciseTick TimeToPreciseTick(double time)
-        {
-            double delta = TickDelta;
-            
-            uint ticks = (uint)Math.Floor(time / delta);
-            double percent = (time % delta);
-
-            return new PreciseTick(ticks, percent);
-        }
-
+        public PreciseTick TimeToPreciseTick(double time) => time.AsPreciseTick(TickDelta);
         
         /// <summary>
         /// Estimatedly converts a synchronized tick to what it would be for the local tick.
@@ -1102,7 +1100,7 @@ namespace FishNet.Managing.Timing
                     writer.WritePacketIdUnpacked(PacketId.TimingUpdate);
                     writer.WriteTickUnpacked(item.PacketTick.Value());
                     item.SendToClient((byte)Channel.Unreliable, writer.GetArraySegment());
-                    writer.Reset();
+                    writer.Clear();
                 }
 
                 writer.Store();
@@ -1135,7 +1133,9 @@ namespace FishNet.Managing.Timing
             uint lastPacketTick = LastPacketTick.RemoteTick;
             //Set Tick based on difference between localTick and clientTick, added onto lastPacketTick.
             uint prevTick = Tick;
-            uint nextTick = (LocalTick - clientTick) + lastPacketTick;
+            //Added ticks for delay in reading packet.
+            const uint socketReadDelay = 1;
+            uint nextTick = ((LocalTick - clientTick) / 2) + lastPacketTick + socketReadDelay;
             long difference = ((long)nextTick - (long)prevTick);
             Tick = nextTick;
 
