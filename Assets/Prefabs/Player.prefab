@@ -173,7 +173,6 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
-  _initializedValusSet: 1
   NetworkObserver: {fileID: 0}
   _enablePrediction: 0
   _predictionType: 0
@@ -188,14 +187,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 2
+  <PrefabId>k__BackingField: 4
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 7807759643866311769
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 1}
+    Position: {x: 0, y: 0, z: 0.5}
     Rotation: {x: 0, y: 0, z: 1, w: 0}
-    LocalScale: {x: 1, y: 1, z: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!114 &7119391675500313013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,8 +217,8 @@ MonoBehaviour:
   canMove: 1
   targetCamera: {fileID: 0}
   pixelsPerUnit: 32
-  bufferZone: 1
   pixelOffsetMaterial: {fileID: 2100000, guid: dd8903d1f27932247b984cff232b7ac2, type: 2}
+  verticalOffset: 3
 --- !u!114 &5218478365347823023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0014278293, y: -0.014816046}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -347,7 +347,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.4421016, y: 0.53948164}
   m_EdgeRadius: 0
 --- !u!50 &7050025933628881913
 Rigidbody2D:

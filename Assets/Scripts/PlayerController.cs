@@ -25,8 +25,6 @@ public class PlayerController : NetworkBehaviour
     
     public float pixelsPerUnit = 32f; // Match this to your game's PPU
     
-    [SerializeField]
-    private float bufferZone = 1f;      // Maximum pixel distance from the player
     
     private Vector3 snappedPosition;  // The camera's snapped position
     private Vector2 subpixelOffset;   // The offset to apply in the shader
@@ -35,6 +33,9 @@ public class PlayerController : NetworkBehaviour
     public Material pixelOffsetMaterial;
     
     private Vector2 movement;
+
+    [SerializeField]
+    private float verticalOffset = 3f;
  
     public override void OnStartClient()
     {
@@ -120,7 +121,7 @@ public class PlayerController : NetworkBehaviour
 
         // Snap the camera's position to the pixel grid
         snappedPosition.x = Mathf.Round(playerPosition.x / snapValue) * snapValue;
-        snappedPosition.y = Mathf.Round(playerPosition.y / snapValue) * snapValue;
+        snappedPosition.y = Mathf.Round((playerPosition.y + verticalOffset) / snapValue) * snapValue;
         snappedPosition.z = targetCamera.transform.position.z; // Keep Z (depth) constant
         
         // Update the camera's position
@@ -129,7 +130,7 @@ public class PlayerController : NetworkBehaviour
         // Calculate the subpixel offset
         Vector2 subpixelOffset = new Vector2(
             playerPosition.x - snappedPosition.x,
-            snappedPosition.y - playerPosition.y
+            snappedPosition.y - (playerPosition.y + verticalOffset)
         );
         
         // Snap the camera position to the pixel grid
