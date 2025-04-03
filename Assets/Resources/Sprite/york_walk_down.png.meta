@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 354f68e86fbfab6459c0a8ac06072530
+guid: 7499191ce0caf5746bee9bccbf69f589
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: running_0
+      name: york_walk_down_0
       rect:
         serializedVersion: 2
         x: 0
@@ -105,20 +105,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60fdb387324cd0e468c864c742e909c8
-      internalID: 126449895
+      spriteID: 88e3bfbb6d77bb54c8ad9aa713e92112
+      internalID: -1083133293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: running_1
+      name: york_walk_down_1
       rect:
         serializedVersion: 2
         x: 32
@@ -126,20 +126,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa31f833b4ff6414d8b7f47c3ee512e3
-      internalID: 277162267
+      spriteID: 26e597632c9018d418e6a5f0d7bff0da
+      internalID: -12380808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: running_2
+      name: york_walk_down_2
       rect:
         serializedVersion: 2
         x: 64
@@ -147,20 +147,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65bbb56ca7d58dc4c80cd522f8b232ee
-      internalID: 214695927
+      spriteID: 486b94aed59d1a145a81e24aebd299cf
+      internalID: 55894414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: running_3
+      name: york_walk_down_3
       rect:
         serializedVersion: 2
         x: 96
@@ -168,20 +168,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 996d121274af58c4c842247c0c098447
-      internalID: -1031656354
+      spriteID: 3e76155a8c45c724b875f726a35f6327
+      internalID: -743424814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: running_4
+      name: york_walk_down_4
       rect:
         serializedVersion: 2
         x: 128
@@ -189,20 +189,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a5d311ce1f9d124e83b8ea31e83ee7a
-      internalID: 942535404
+      spriteID: cdca445c325b3e14aa5994e8584c2973
+      internalID: 1886751696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: running_5
+      name: york_walk_down_5
       rect:
         serializedVersion: 2
         x: 160
@@ -210,14 +210,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4815fa30107c8c6449ea04673b4d8162
-      internalID: -2005750318
+      spriteID: 134ed457a1caa2e41a327bf8fdea11b7
+      internalID: -1940366835
       vertices: []
       indices: 
       edges: []
@@ -225,7 +225,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 384684cbbeaf0ea4d896c19003d1cee3
     internalID: 0
     vertices: []
     indices: 
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      running_0: 126449895
-      running_1: 277162267
-      running_2: 214695927
-      running_3: -1031656354
-      running_4: 942535404
-      running_5: -2005750318
+      york_walk_down_0: -1083133293
+      york_walk_down_1: -12380808
+      york_walk_down_2: 55894414
+      york_walk_down_3: -743424814
+      york_walk_down_4: 1886751696
+      york_walk_down_5: -1940366835
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

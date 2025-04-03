@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,6 +34,10 @@ public class PlayerController : NetworkBehaviour
     public Material pixelOffsetMaterial;
     
     private Vector2 movement;
+    
+    [SerializeField]
+    private Animator animator;
+    private String currentState;
 
     [SerializeField]
     private float verticalOffset = 3f;
@@ -54,10 +59,23 @@ public class PlayerController : NetworkBehaviour
     void Start()
     {
         // Configure Rigidbody2D properties
+        animator = GetComponent<Animator>();
+        
         rb2D.freezeRotation = true;
         rb2D.drag = 5f;
         rb2D.angularDrag = 10f;
         rb2D.gravityScale = 0f; // Disable gravity for top-down or side-scrolling games
+    }
+
+    void ChangeAnimationState(String newState)
+    {
+        if (currentState == newState)
+        {
+            return;
+        }
+        animator.Play(newState);
+        
+        currentState = newState;
     }
  
     void Update()
