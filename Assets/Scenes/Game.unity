@@ -2590,13 +2590,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1574435228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211a9f6ec51ddc14f908f5acc0cd0423, type: 3}
+  m_Script: {fileID: 11500000, guid: ad60547cbf1b986478cf38aafe696304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 5039206779619965638, guid: 1086059e83147f64b9db341a93d654e2, type: 3}
+  _playerPrefab: {fileID: 5415303462613565751, guid: 274544355970e074bab1abe9c386b462, type: 3}
   _addToDefaultScene: 1
-  Spawns:
-  - {fileID: 0}
+  Spawns: []
 --- !u!1 &1607420589
 GameObject:
   m_ObjectHideFlags: 0

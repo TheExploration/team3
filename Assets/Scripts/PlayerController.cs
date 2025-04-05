@@ -12,7 +12,7 @@ public class PlayerController : NetworkBehaviour
 {
     [Header("Base setup")]
     [SerializeField]
-    private float moveSpeed = 100f;
+    private float moveSpeed = 2.5f;
  
     [SerializeField]
     private Rigidbody2D rb2D;
@@ -29,7 +29,6 @@ public class PlayerController : NetworkBehaviour
 
     private bool moving = false;
     
-    [SerializeField]
     private Camera targetCamera;
     
     // Reference to your material
@@ -199,7 +198,7 @@ public class PlayerController : NetworkBehaviour
         }
 
         float angle = RotateTowardsMouse();
-        Debug.Log($"Angle: {angle}");
+        
         if (angle < 30) {
             animateMoving("IDLE_RIGHT", "WALK_RIGHT");
         } else if (angle < 60) {
