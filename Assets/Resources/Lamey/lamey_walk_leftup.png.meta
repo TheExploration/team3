@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7499191ce0caf5746bee9bccbf69f589
+guid: 4276786adb94d2e4b86335eb1c89e82f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: york_walk_down_0
+      name: lamey_walk_downleft_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88e3bfbb6d77bb54c8ad9aa713e92112
-      internalID: -1083133293
+      spriteID: 2390996afc5252a4f94a2f04580811b7
+      internalID: -1755902077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: york_walk_down_1
+      name: lamey_walk_downleft_1
       rect:
         serializedVersion: 2
         x: 32
@@ -132,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26e597632c9018d418e6a5f0d7bff0da
-      internalID: -12380808
+      spriteID: e24a18fee9522b949a2966dc9d935c21
+      internalID: -1843492908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: york_walk_down_2
+      name: lamey_walk_downleft_2
       rect:
         serializedVersion: 2
         x: 64
@@ -153,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 486b94aed59d1a145a81e24aebd299cf
-      internalID: 55894414
+      spriteID: 61a246b597849e1489a232bb7c6b71fa
+      internalID: 129049984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: york_walk_down_3
+      name: lamey_walk_downleft_3
       rect:
         serializedVersion: 2
         x: 96
@@ -174,14 +174,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e76155a8c45c724b875f726a35f6327
-      internalID: -743424814
+      spriteID: 6e1d41654d6fe5c4c9d6c8675a573836
+      internalID: 58792819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: york_walk_down_4
+      name: lamey_walk_downleft_4
       rect:
         serializedVersion: 2
         x: 128
@@ -195,14 +195,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdca445c325b3e14aa5994e8584c2973
-      internalID: 1886751696
+      spriteID: 6d5c3144702c0b5459eb961508c2918b
+      internalID: 1641503824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: york_walk_down_5
+      name: lamey_walk_downleft_5
       rect:
         serializedVersion: 2
         x: 160
@@ -216,8 +216,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 134ed457a1caa2e41a327bf8fdea11b7
-      internalID: -1940366835
+      spriteID: f76e0908b59ca654a90af336b7383357
+      internalID: 1166172561
       vertices: []
       indices: 
       edges: []
@@ -225,7 +225,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 384684cbbeaf0ea4d896c19003d1cee3
+    spriteID: 3d1c831925c2a3345a7b511e414970d0
     internalID: 0
     vertices: []
     indices: 
@@ -233,12 +233,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      york_walk_down_0: -1083133293
-      york_walk_down_1: -12380808
-      york_walk_down_2: 55894414
-      york_walk_down_3: -743424814
-      york_walk_down_4: 1886751696
-      york_walk_down_5: -1940366835
+      lamey_walk_downleft_0: -1755902077
+      lamey_walk_downleft_1: -1843492908
+      lamey_walk_downleft_2: 129049984
+      lamey_walk_downleft_3: 58792819
+      lamey_walk_downleft_4: 1641503824
+      lamey_walk_downleft_5: 1166172561
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

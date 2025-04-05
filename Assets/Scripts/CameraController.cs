@@ -33,5 +33,6 @@ public class CameraController : MonoBehaviour
 
         // Use our modified matrix.
         _camera.projectionMatrix = mat;
+        
     }
 }
