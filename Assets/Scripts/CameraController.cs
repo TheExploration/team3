@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,8 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField, HideInInspector]
     Camera _camera;
-    
 
-    
+
     // Start is called before the first frame update
     void OnValidate()
     {
@@ -33,5 +33,6 @@ public class CameraController : MonoBehaviour
 
         // Use our modified matrix.
         _camera.projectionMatrix = mat;
+        
     }
 }
