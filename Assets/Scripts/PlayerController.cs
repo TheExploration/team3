@@ -26,7 +26,6 @@ public class PlayerController : NetworkBehaviour
     [HideInInspector]
     public bool canMove = true;
 
-
     private bool moving = false;
     
     private Camera targetCamera;
@@ -54,6 +53,9 @@ public class PlayerController : NetworkBehaviour
     [SerializeField]
     private float verticalOffset = 3f;
  
+    [Header("Pixel Perfect Settings")] // Added header for clarity
+    [SerializeField] private float minimumResolution = 288f; // Resolution below which effect is minimal
+    [SerializeField] private float maximumResolution = 1152f; // Resolution above which effect is full
     
     private readonly SyncVar<int> playerId = new SyncVar<int>(-1, new SyncTypeSettings(1f));
     
@@ -322,7 +324,15 @@ public class PlayerController : NetworkBehaviour
             subpixelOffsetWorld.y / cameraViewHeightWorld
         );
 
-        // Apply the subpixel offset to the material
-        pixelOffsetMaterial.SetVector("_SubpixelOffset", subpixelOffsetUV);
+        // Calculate adaptive scaling based on current resolution
+        float currentMinScreenDim = Mathf.Min(Screen.width, Screen.height);
+        float scaleFactor = Mathf.Clamp01((currentMinScreenDim - minimumResolution) / 
+                                         (maximumResolution - minimumResolution));
+        
+        // Apply the scaling factor to the UV offset
+        Vector2 scaledSubpixelOffsetUV = subpixelOffsetUV * scaleFactor;
+
+        // Apply the scaled subpixel offset to the material
+        pixelOffsetMaterial.SetVector("_SubpixelOffset", scaledSubpixelOffsetUV); // Use scaled offset
     }
 }
