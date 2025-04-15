@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a6d84aa5d214e48a7308646e5d20da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 201277550}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 201277550}
   _tickCallbacks: 6
-  _jumpForce: 30
+  _jumpForce: 13
   _moveRate: 4
 --- !u!114 &201277550
 MonoBehaviour:
@@ -70,7 +70,8 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: -2060332294883903109}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -82,28 +83,28 @@ MonoBehaviour:
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  _enablePrediction: 0
+  _enablePrediction: 1
   _predictionType: 0
   _graphicalObject: {fileID: 0}
   _detachGraphicalObject: 0
   _enableStateForwarding: 1
   _networkTransform: {fileID: 0}
-  _ownerInterpolation: 1
+  _ownerInterpolation: 2
   _ownerSmoothedProperties: 255
-  _adaptiveInterpolation: 3
+  _adaptiveInterpolation: 0
   _spectatorSmoothedProperties: 255
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 7
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 9608169563376464318
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Position: {x: -4.80351, y: 0.18147132, z: 5.430528}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!143 &4148834954576211901
 CharacterController:
   m_ObjectHideFlags: 0
@@ -181,14 +182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dc97a8b9e628044e83004c93095c14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8013474958425823559}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8013474958425823559}
   _maximumSimultaneousHits: 16
   _additionalSize: 0.1
   _layers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!114 &8013474958425823559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +206,8 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: 2367975056509727580}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -230,15 +232,15 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 21
   <SpawnableCollectionId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 0
+  <AssetPathHash>k__BackingField: 16574675316859699392
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
     Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 1, z: 1}
+    IsValid: 1
 --- !u!1 &5873068582516782542
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,18 +356,20 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 201277550}
   _networkObjectCache: {fileID: 0}
   _initializationSettings:
-    TargetTransform: {fileID: 0}
+    TargetTransform: {fileID: 303449598114786577}
     DetachOnStart: 0
     AttachOnStop: 0
   _controllerMovementSettings:
     EnableTeleport: 0
     TeleportThreshold: 0
-    AdaptiveInterpolationValue: 0
+    AdaptiveInterpolationValue: 4
     InterpolationValue: 2
     SmoothedProperties: 4294967295
+    SnapNonSmoothedProperties: 0
   _spectatorMovementSettings:
     EnableTeleport: 0
     TeleportThreshold: 0
-    AdaptiveInterpolationValue: 0
+    AdaptiveInterpolationValue: 4
     InterpolationValue: 2
     SmoothedProperties: 4294967295
+    SnapNonSmoothedProperties: 0
