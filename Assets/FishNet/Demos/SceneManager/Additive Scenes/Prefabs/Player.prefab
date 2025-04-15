@@ -340,13 +340,13 @@ MonoBehaviour:
   _spectatorInterpolation: 2
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 20
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 5491988111533709812
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
+    Position: {x: 0, y: 20, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
     Scale: {x: 0, y: 0, z: 0}
     IsValid: 0
 --- !u!114 &6767263130208162619
@@ -361,11 +361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8541d1cca4da7043b84a0d563939dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 8192566354860284824}
-  _networkObjectCache: {fileID: 0}
-  _ownerObjects: {fileID: 0}
-  _moveRate: 2
+  _networkObjectCache: {fileID: 8192566354860284824}
+  _ownerObjects: {fileID: 6508211851680439895}
+  _moveRate: 3
 --- !u!54 &-1062563901163859699
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -408,9 +408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8192566354860284824}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8192566354860284824}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:
@@ -420,8 +420,8 @@ MonoBehaviour:
   _interpolation: 2
   _extrapolation: 2
   _enableTeleport: 0
-  _teleportThreshold: 1
-  _clientAuthoritative: 1
+  _teleportThreshold: 0.5
+  _clientAuthoritative: 0
   _sendToOwner: 1
   _interval: 1
   _synchronizePosition: 1

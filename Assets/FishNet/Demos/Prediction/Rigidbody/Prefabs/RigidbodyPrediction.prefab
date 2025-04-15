@@ -280,16 +280,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad6d36d37ac2b84391a4f7362846abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 0
   _addedNetworkObject: {fileID: 201277550}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 201277550}
   _tickCallbacks: 6
-  _frontWheelRigidbody: {fileID: 0}
-  _rearWheelRigidbody: {fileID: 0}
-  _boostDuration: 1
-  _boostForce: 20
-  _moveRate: 4
-  _turnRate: 4
+  _frontWheelRigidbody: {fileID: 1491914385}
+  _rearWheelRigidbody: {fileID: 562823042}
+  _boostDuration: 2
+  _boostForce: 30
+  _moveRate: 40
+  _turnRate: 15
 --- !u!114 &201277550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +306,8 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
   <PredictedOwner>k__BackingField: {fileID: 0}
-  NetworkBehaviours: []
+  NetworkBehaviours:
+  - {fileID: -4020445548991912745}
   InitializedParentNetworkBehaviour: {fileID: 0}
   InitializedNestedNetworkObjects: []
   RuntimeParentNetworkBehaviour: {fileID: 0}
@@ -317,29 +318,30 @@ MonoBehaviour:
   _initializeOrder: 0
   _preventDespawnOnDisconnect: 0
   _defaultDespawnType: 0
+  _initializedValusSet: 1
   NetworkObserver: {fileID: 0}
-  _enablePrediction: 0
-  _predictionType: 0
+  _enablePrediction: 1
+  _predictionType: 1
   _graphicalObject: {fileID: 0}
   _detachGraphicalObject: 0
   _enableStateForwarding: 1
   _networkTransform: {fileID: 0}
-  _ownerInterpolation: 1
+  _ownerInterpolation: 2
   _ownerSmoothedProperties: 255
-  _adaptiveInterpolation: 3
+  _adaptiveInterpolation: 4
   _spectatorSmoothedProperties: 255
-  _spectatorInterpolation: 2
+  _spectatorInterpolation: 3
   _enableTeleport: 0
   _teleportThreshold: 1
-  <PrefabId>k__BackingField: 65535
+  <PrefabId>k__BackingField: 7
   <SpawnableCollectionId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 9421305386573913446
   <SceneId>k__BackingField: 0
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    Scale: {x: 0, y: 0, z: 0}
-    IsValid: 0
+    Position: {x: -4.80351, y: 0.18147132, z: 5.430528}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    Scale: {x: 1, y: 0.5, z: 1}
+    IsValid: 1
 --- !u!54 &1517669882
 Rigidbody:
   m_ObjectHideFlags: 0
