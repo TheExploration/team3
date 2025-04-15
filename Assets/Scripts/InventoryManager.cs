@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using FishNet.Component.Transforming;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
@@ -10,7 +11,7 @@ public class InventoryManager : NetworkBehaviour
 {
 
      // SyncVar for the currently selected weapon index
-    private readonly SyncVar<int> selectedWeapon = new SyncVar<int>(-1); // Default to -1 (no weapon selected)
+    private readonly SyncVar<NetworkObject> selectedWeapon = new SyncVar<NetworkObject>(); 
 
     // SyncLists to store networked weapons and items
     private readonly SyncList<NetworkObject> weapons = new SyncList<NetworkObject>();
@@ -27,35 +28,74 @@ public class InventoryManager : NetworkBehaviour
 
     private bool hasFlipped = false;
     
-    
-    public override void OnStartServer()
-    {
-        base.OnStartServer();
+
+   [ServerRpc]
+   private void SpawnStartingWeapon(NetworkConnection conn = null) {
         if (startingWeaponPrefab != null)
         {
+            // Check if we already have weapons
+                if (weapons.Count > 0)
+                    return;
+
+                // Instantiate and spawn the starting weapon
+                GameObject weaponInstance = Instantiate(startingWeaponPrefab);
+                
+                NetworkObject weaponNetObj = weaponInstance.GetComponent<NetworkObject>();
+
+                
+                
+                // Add to inventory and parent to player
+                weapons.Add(weaponNetObj);
+                selectedWeapon.Value = weaponNetObj;
+                weaponNetObj.SetParent(rightHand);
+
+                base.Spawn(weaponNetObj, conn);
+                
+        }
+   }
+    /*    public override void OnSpawnServer(NetworkConnection conn)
+    {
+        if (startingWeaponPrefab != null)
+        {
+            // Check if we already have weapons
+            if (weapons.Count > 0)
+                return;
+
             // Instantiate and spawn the starting weapon
             GameObject weaponInstance = Instantiate(startingWeaponPrefab);
-            base.Spawn(weaponInstance);
+            
             NetworkObject weaponNetObj = weaponInstance.GetComponent<NetworkObject>();
+
+            
             
             // Add to inventory and parent to player
             weapons.Add(weaponNetObj);
-            selectedWeapon.Value = 0; // Select the starting weapon
+            selectedWeapon.Value = weaponNetObj;
             weaponNetObj.SetParent(rightHand);
+
+            base.Spawn(weaponNetObj, conn);
+            
         }
-    }
+    }*/
+    
     
     // Called when the client starts, including late joiners
     public override void OnStartClient()
     {
         base.OnStartClient();
         
+        if (base.IsOwner)
+        {
+            SpawnStartingWeapon();
+        }
         
         // Register callback for weapon list changes
         weapons.OnChange += OnWeaponsChanged;
         selectedWeapon.OnChange += OnSelectedWeaponChanged;
         // Set initial visibility state
-        CmdSetSelectedWeapon(0);
+        if (base.IsOwner) {
+            CmdSetSelectedWeapon(0);
+        }
         UpdateWeaponVisibility();
 
     }
@@ -97,7 +137,9 @@ public class InventoryManager : NetworkBehaviour
         // Handle weapon switching input
         HandleWeaponSwitching();
         
-        NetworkObject networkObject = weapons[selectedWeapon.Value];
+        NetworkObject networkObject = selectedWeapon.Value;
+
+        if (!networkObject.IsOwner) return;
 
         float angle = RotateTowardsMouse();
         
@@ -155,15 +197,15 @@ public class InventoryManager : NetworkBehaviour
     }
 
     // Server RPC to set the selected weapon
-    [ServerRpc(RequireOwnership = false)]
+    [ServerRpc]
     private void CmdSetSelectedWeapon(int index)
     {
         if (index >= 0 && index < weapons.Count)
-            selectedWeapon.Value = index;
+            selectedWeapon.Value = weapons[index];
     }
 
     // Callback when selectedWeapon SyncVar changes
-    private void OnSelectedWeaponChanged(int oldValue, int newValue, bool asServer)
+    private void OnSelectedWeaponChanged(NetworkObject oldValue, NetworkObject newValue, bool asServer)
     {
         UpdateWeaponVisibility();
     }
@@ -182,7 +224,7 @@ public class InventoryManager : NetworkBehaviour
         for (int i = 0; i < weapons.Count; i++)
         {
             if (weapons[i] != null)
-                weapons[i].gameObject.SetActive(i == selectedWeapon.Value);
+                weapons[i].gameObject.SetActive(weapons[i] == selectedWeapon.Value);
         }
     }
 
@@ -206,7 +248,7 @@ public class InventoryManager : NetworkBehaviour
         weaponNetObj.transform.localPosition = Vector3.zero; // Adjust as needed
         if (weapons.Count == 1)
         {
-            selectedWeapon.Value = 0; // Auto-select first weapon
+            selectedWeapon.Value = weaponNetObj; // Auto-select first weapon
         }
         
     }
@@ -235,3 +277,4 @@ public class InventoryManager : NetworkBehaviour
 
 
 }
+
